@@ -30,10 +30,65 @@ export function combinedCode(id,type,behaviour='hold'){
  else action='        # Change this threshold after looking at your own readings.\n        # Temperature mapping: 0.5 is 20 degrees C. Distance: 0.5 is 0.5 m.\n        if '+(x.analogue?'value >= 0.5':'bool(raw)')+':\n            buzzer.on()\n        else:\n            buzzer.off()';
  return `# Pico Musical Instrument — ${x.name} + ${type}\n# Run this complete example on the Pico, not alongside another test.\nfrom time import sleep, ticks_ms, ticks_diff\n${soundHead(type)}\n${init}\nbeat_started = ticks_ms()\n\ntry:\n    while True:\n        now = ticks_ms()\n${read.split('\n').filter(Boolean).map(l=>'    '+l).join('\n')}\n        if raw is None:\n            buzzer.off()\n            sleep(0.01)\n            continue\n        value = max(0.0, min(1.0, ${value}))\n${action}\n        sleep(0.01)\nfinally:\n    buzzer.off()\n`;
 }
-export function exampleCode(kind){
+export function exampleCode(kind,variant='distance'){
+ if(kind==='theremin')return thereminCode(variant);
+ if(kind==='drumkit')return `# Each metal pan goes to its own GP pin. Foil-covered sticks go to GND.
+from picozero import Button, PWMBuzzer
+from time import sleep
+
+pans = [Button(10), Button(0), Button(1)]
+buzzer = PWMBuzzer(9, 2000, 32768)
+pitches = [220, 440, 880]
+lengths = [0.12, 0.07, 0.03]
+was_touching = [False, False, False]
+
+try:
+    while True:
+        for i, pan in enumerate(pans):
+            touching = pan.is_pressed
+            if touching and not was_touching[i]:
+                buzzer.freq = pitches[i]
+                buzzer.on()
+                sleep(lengths[i])
+                buzzer.off()
+            was_touching[i] = touching
+        sleep(0.01)
+finally:
+    buzzer.off()
+`;
+ if(!['guitar','violin'].includes(kind))throw Error('Unknown example');
  const init='from picozero import Button, PWMBuzzer\nfrom time import sleep\n\nbuzzer = PWMBuzzer(9, 2000, 32768)\n# Keep the first switch on the Skills Bricks pin.\n# GP0, GP1 and GP2 are free in the Skills Bricks Pico pin map.\ncontacts = [Button(10), Button(0), Button(1)]\nnotes = [262, 330, 392]\n';
  if(kind==='guitar')return init+'pick = Button(2)  # Body foil; the foil pick connects to GND\n\ntry:\n    while True:\n        pitch = 220  # Open note: no fret held\n        for fret, note in zip(contacts, notes):\n            if fret.is_pressed:\n                pitch = note\n                break\n        if pick.is_pressed:\n            buzzer.freq = pitch\n            buzzer.on()\n        else:\n            buzzer.off()\n        sleep(0.01)\nfinally:\n    buzzer.off()\n';
  return init+'# Each thread goes to one contact pin. The bow goes to GND.\ntry:\n    while True:\n        pitch = None\n        for thread, note in zip(contacts, notes):\n            if thread.is_pressed:\n                pitch = note\n                break\n        if pitch is None:\n            buzzer.off()\n        else:\n            buzzer.freq = pitch\n            buzzer.on()\n        sleep(0.01)\nfinally:\n    buzzer.off()\n';
+}
+
+function thereminCode(variant){
+ if(!['distance','pot','distance-pot','two-distance'].includes(variant))throw Error('Unknown theremin control');
+ const useDistance=variant!=='pot',second=variant==='distance-pot'?'pot':variant==='two-distance'?'distance':null;
+ const imports=`from picozero import ${[useDistance?'DistanceSensor':null,second==='pot'||variant==='pot'?'Pot':null,'PWMBuzzer'].filter(Boolean).join(', ')}\nfrom time import sleep${second?', ticks_ms, ticks_diff':''}`;
+ const setup=`buzzer = PWMBuzzer(9, 2000, 32768)\n${useDistance?'hand = DistanceSensor(echo=21, trigger=20)\n':''}${variant==='pot'||second==='pot'?'dial = Pot(26)\n':''}${second==='distance'?'other_hand = DistanceSensor(echo=19, trigger=18)\n':''}${second?'beat_started = ticks_ms()\n':''}`;
+ const read=useDistance?'        distance = hand.distance\n'+(second==='distance'?'        sleep(0.06)  # Give the first echo time to fade\n':'')+(second==='distance'?'        pulse_distance = other_hand.distance\n        sleep(0.06)\n':'')+'        if distance is None or distance > 0.6'+(second==='distance'?' or pulse_distance is None':'')+':\n            buzzer.off()\n            sleep(0.02)\n            continue\n        pitch = int(220 + (0.6 - distance) * 1000)\n':'        pitch = int(220 + dial.value * 660)\n';
+ const action=!second?'        buzzer.freq = pitch\n        buzzer.on()\n        sleep(0.02)\n':`        ${second==='pot'?'control = dial.value':'control = min(1.0, pulse_distance / 0.6)'}
+        period = int(200 + control * 700)
+        now = ticks_ms()
+        if ticks_diff(now, beat_started) >= period:
+            beat_started = now
+        buzzer.freq = pitch
+        if ticks_diff(now, beat_started) < period // 2:
+            buzzer.on()
+        else:
+            buzzer.off()
+        sleep(0.02)
+`;
+ return `# Pico theremin: ${variant}. A passive buzzer changes pitch.
+${imports}
+
+${setup}
+try:
+    while True:
+${read}${action}finally:
+    buzzer.off()
+`;
 }
 
 export function pairIssue(first,second){

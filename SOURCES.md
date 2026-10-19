@@ -42,10 +42,10 @@ interpreter image retains its MIT copyright and permission notice in
 
 The parts/approaches structure follows the
 [Platformer branching-pathway prototype](https://raspberrypifoundation.github.io/ccp-branching-pathways-testing/).
-The shared-start and freely ordered parts, prerequisite warnings, guitar and
-violin descriptions come from Mark Calleja's brief. The single-control,
-two-control and multi-contact code is new; it is not a claim that Mark's original instruments used these exact pins
-or programs.
+The shared start and freely ordered parts, prerequisite warnings, guitar,
+violin, drumkit and theremin ideas come from Mark Calleja's brief. The
+single-control, two-control, multi-contact and optional example programs are
+new; they do not claim that any earlier instrument used these exact pins or code.
 
 The palette follows the existing Build Lab Code Club theme. The decorative materials
 illustration is new inline SVG and is not a wiring diagram.

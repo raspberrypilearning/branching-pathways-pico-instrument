@@ -8,16 +8,20 @@ for case in cases:
     step=[0]; devices={}; records=[]; kind=case.get('example'); duration=170
     def sample(pin=None):
         i=step[0]
-        if kind:
+        if kind in ('guitar','violin','drumkit'):
             if pin==2:return i<120
             return 20 <= i < 50 if pin==10 else 50 <= i < 80 if pin==0 else 80 <= i < 110
+        if kind=='theremin':
+            if pin==26:return 0.1 if i<80 else 0.9
+            if pin==19:return 0.2 if i<80 else 0.5
+            if pin==21:return 0.15 if i<30 else 0.35 if i<90 else 0.9
         return 0.1 if i<30 or 70<=i<110 else 0.9
     class Device:
         def __init__(self,pin,*args,**kwargs):self.pin=pin;self.output=0;self.freq=2000;devices[pin]=self
         @property
         def value(self):return sample(self.pin)
         @property
-        def is_pressed(self):return bool(sample(self.pin)) if kind else self.value>.5
+        def is_pressed(self):return bool(sample(self.pin)) if kind in ('guitar','violin','drumkit') else self.value>.5
         @property
         def is_touched(self):return self.value>.5
         @property
@@ -60,8 +64,15 @@ for case in cases:
     if case.get('input')=='distance':assert all(r[1]==0 for r in records if 40<=r[0]<60),('missing echo',case)
     if case.get('mode')=='pitch':assert len({r[2] for r in records if r[1]})>=2,('pitch never changed',case)
     if case.get('sound')=='buzzer':assert {r[2] for r in records}=={2000},('active pitch changed',case)
-    if kind:
+    if kind in ('guitar','violin'):
         expected={20:262,50:330,80:392}
         for i,pitch in expected.items():assert records[i][1:]==(1,pitch),(kind,i,records[i])
         assert records[125][1]==0,(kind,'should be quiet after release')
+    if kind=='drumkit':
+        assert {r[2] for r in records if r[1]}=={220,440,880},('missing drum sound',case)
+        assert records[125][1]==0,('drum should stop after tapping',case)
+    if kind=='theremin':
+        active={r[2] for r in records if r[1]}
+        assert len(active)>=2,('theremin pitch never changed',case,active)
+        if case['variant']!='pot':assert all(r[1]==0 for r in records if 40<=r[0]<60),('theremin should go quiet without an echo',case)
 print('Executed',len(cases),'instrument programs with simulated readings; pitch, silence, missing echo, contact notes and cleanup passed.')

@@ -37,20 +37,26 @@ Build Lab's instructions, troubleshooting dialogs and six original screenshots.
 
 ## Optional inspiration
 
-Guitar and violin are examples, not pathway choices. They live under “Ideas to
+Pico guitar, Pico violin, Pico drumkit and Pico theremin are examples, not pathway choices. They live under “Ideas to
 borrow”, separate from the parts hub and body techniques. Learners can borrow
 a contact technique without inheriting a shape, instrument name or playing rule.
 
 The guitar uses fret buttons and a homemade pick switch: foil on the pick is
 connected to GND, and foil on the body to GP2. Contact plays the selected note.
 The violin uses three separated conductive threads as note contacts and a
-conductive bow connected to GND. Contact with a thread plays its note.
+conductive bow connected to GND. Contact with a thread plays its note. The
+drumkit uses metal pots or pans as separate switches: foil-covered chopsticks
+or pencils connect to GND and a tap triggers a short electronic drum sound.
+The theremin uses a 3.3 V-compatible HC-SR04P distance sensor to change pitch,
+with optional dial-only, distance-plus-dial and two-distance-sensor programs.
 
-Both examples retain the Skills Bricks button on GP10 and passive buzzer on GP9.
+The contact examples retain the Skills Bricks button on GP10 and passive buzzer on GP9.
 Additional contacts use GP0, GP1 and (for the pick) GP2, the free pins in the
 Skills Bricks Pico pin map. A table explicitly describes the extra connections;
 the unchanged button diagram illustrates the repeated contact-to-GND circuit.
-Examples use one note at a time. The first held contact wins if several close.
+Contact examples use one note at a time. The first held contact wins if several close.
+The theremin keeps the Skills Bricks distance sensor on GP20/GP21, potentiometer
+on GP26 and passive buzzer on GP9; a second distance sensor uses GP18/GP19.
 
 ## Run locally
 
@@ -116,14 +122,14 @@ also refreshes setup-help.js, adapting only project/page names.
 
 - Core tests verify source-asset checksums, project persistence, invalidation,
   escaping, compatibility and pin choices.
-- 564 Python programs pass syntax parsing, including every compatible pair recipe.
-- 47 input/sound and instrument programs and 10 two-control scenarios pass
+- 569 Python programs pass syntax parsing, including every compatible pair recipe.
+- 52 input/sound and instrument programs and 10 two-control scenarios pass
   simulation tests for independent actions, pulse and pitch changes, missing
   echoes, slow temperature probes, contact notes and shutdown.
 - Browser checks cover the setup gate, a body-first route, prerequisite returns,
   open body techniques, multiple kept controls, rule choices, pin conflicts,
   help dialogs, buzzer identification, named-note downloads, local persistence,
-  export/import, all diagrams and 62 page/viewport
+  export/import, all diagrams and 66 page/viewport
   combinations at desktop and mobile sizes. Rendered pages were visually checked.
 - These checks do **not** establish physical electrical performance, timing,
   sensor calibration, reliability of conductive materials or accessibility of a
