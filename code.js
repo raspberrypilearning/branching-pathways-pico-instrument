@@ -10,8 +10,9 @@ export function soundCode(type,pattern='beep'){
 }
 const probeInit='from machine import Pin\nimport onewire, ds18x20\nbus = onewire.OneWire(Pin(22))\nsensor = ds18x20.DS18X20(bus)\nprobes = sensor.scan()\nassert probes, "Check probe wiring"';
 export function inputCode(id){const x=byInput[id];if(!x)throw Error('Unknown input');
- if(id==='temperature-probe')return probeInit+'\nfrom time import sleep_ms\n\nwhile True:\n    sensor.convert_temp()\n    sleep_ms(750)\n    print(sensor.read_temp(probes[0]))\n';
- return `from picozero import ${x.cls}\nfrom time import sleep\n\n${x.setup}\n\nwhile True:\n    print(${x.read})\n    sleep(0.1)\n`;
+ const condition={potentiometer:'reading > 0.5',ldr:'reading < 0.5',distance:'reading is not None and reading < 0.3','temperature-sensor':'reading > 25','temperature-probe':'reading > 25'}[id]||'reading';
+ if(id==='temperature-probe')return `${probeInit}\nfrom time import sleep_ms\n\nwhile True:\n    sensor.convert_temp()\n    sleep_ms(750)\n    reading = sensor.read_temp(probes[0])\n    print(reading)\n    if ${condition}:\n        print("Playing action detected!")\n`;
+ return `from picozero import ${x.cls}\nfrom time import sleep\n\n${x.setup}\n\nwhile True:\n    reading = ${x.read}\n    print(reading)\n    if ${condition}:\n        print("Playing action detected!")\n    sleep(0.1)\n`;
 }
 export function combinedCode(id,type,behaviour='hold'){
  const x=byInput[id];if(!x||!['buzzer','passive-buzzer'].includes(type))throw Error('Choose an input and sound maker.');
