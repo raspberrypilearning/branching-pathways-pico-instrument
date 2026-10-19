@@ -34,3 +34,92 @@ export function exampleCode(kind){
  if(kind==='guitar')return init+'pick = Button(2)  # Body foil; the foil pick connects to GND\n\ntry:\n    while True:\n        pitch = 220  # Open note: no fret held\n        for fret, note in zip(contacts, notes):\n            if fret.is_pressed:\n                pitch = note\n                break\n        if pick.is_pressed:\n            buzzer.freq = pitch\n            buzzer.on()\n        else:\n            buzzer.off()\n        sleep(0.01)\nfinally:\n    buzzer.off()\n';
  return init+'# Each thread goes to one contact pin. The bow goes to GND.\ntry:\n    while True:\n        pitch = None\n        for thread, note in zip(contacts, notes):\n            if thread.is_pressed:\n                pitch = note\n                break\n        if pitch is None:\n            buzzer.off()\n        else:\n            buzzer.freq = pitch\n            buzzer.on()\n        sleep(0.01)\nfinally:\n    buzzer.off()\n';
 }
+
+export function pairIssue(first,second){
+ if(!byInput[first]||!byInput[second])return 'Choose two controls to explore this example.';
+ if(first===second)return 'These two cards use the same pins. For repeated homemade switches, open “Add more contacts” below.';
+ if(['pir','am312-pir'].includes(first)&&['pir','am312-pir'].includes(second))return 'Both PIR cards use GP16. Use one PIR with a different control for this example.';
+ return '';
+}
+function readerCode(id,name){
+ const x=byInput[id];
+ const setup=id==='temperature-probe'?probeInit:`from picozero import ${x.cls}\n${x.setup}`;
+ const body=id==='temperature-probe'?`sensor.convert_temp()
+started = ticks_ms()
+value = None
+def read():
+    nonlocal started, value
+    now = ticks_ms()
+    if ticks_diff(now, started) >= 750:
+        value = sensor.read_temp(probes[0])
+        sensor.convert_temp()
+        started = now
+    return value
+return read`:`return lambda: ${x.read}`;
+ return `def make_${name}():\n${(setup+'\n'+body).split('\n').map(l=>'    '+l).join('\n')}\nread_${name} = make_${name}()\n`;
+}
+export function pairCode(first,second,type,rule='either'){
+ const issue=pairIssue(first,second);if(issue)throw Error(issue);
+ if(!['buzzer','passive-buzzer'].includes(type))throw Error('Choose a sound maker.');
+ if(!['either','both','pitch','rhythm'].includes(rule))throw Error('Choose a rule.');
+ if(['pitch','rhythm'].includes(rule)&&!byInput[second].analogue)throw Error('Choose a changing-value second control.');
+ if(rule==='pitch'&&type!=='passive-buzzer')throw Error('Pitch changes need a passive buzzer.');
+ const normalise=(id,variable)=>id.startsWith('temperature-')?`(${variable} + 10) / 60`:`float(${variable})`;
+ let action;
+ if(rule==='either'||rule==='both')action=`if first_on ${rule==='either'?'or':'and'} second_on:\n    buzzer.on()\nelse:\n    buzzer.off()`;
+ else if(rule==='pitch')action='if first_on and second_value is not None:\n    buzzer.freq = int(220 + second_value * 660)\n    buzzer.on()\nelse:\n    buzzer.off()';
+ else action='if first_on and second_value is not None:\n    period = int(900 - second_value * 700)\n    if ticks_diff(now, beat_started) >= period:\n        beat_started = now\n    if ticks_diff(now, beat_started) < period // 2:\n        buzzer.on()\n    else:\n        buzzer.off()\nelse:\n    buzzer.off()\n    beat_started = now';
+ return `# Two controls, your rule: ${rule}
+# First: ${byInput[first].name}. Second: ${byInput[second].name}.
+# Uses each Skills Bricks circuit unchanged, with a shared GND.
+from time import sleep, ticks_ms, ticks_diff
+${soundHead(type)}
+
+${readerCode(first,'first')}
+${readerCode(second,'second')}
+# Change these thresholds after trying your own readings.
+# Temperature: 0.5 means 20 C; distance: 0.5 means 0.5 m.
+first_threshold = 0.5
+second_threshold = 0.5
+beat_started = ticks_ms()
+
+try:
+    while True:
+        now = ticks_ms()
+        first_raw = read_first()
+        second_raw = read_second()
+        first_value = None if first_raw is None else max(0.0, min(1.0, ${normalise(first,'first_raw')}))
+        second_value = None if second_raw is None else max(0.0, min(1.0, ${normalise(second,'second_raw')}))
+        first_on = first_value is not None and first_value >= first_threshold
+        second_on = second_value is not None and second_value >= second_threshold
+${action.split('\n').map(l=>'        '+l).join('\n')}
+        sleep(0.01)
+finally:
+    buzzer.off()
+`;
+}
+export const contactsCode=`# Any shape, three homemade contacts and a passive buzzer.
+from picozero import Button, PWMBuzzer
+from time import sleep
+
+buzzer = PWMBuzzer(9, 2000, 32768)
+# Each switch connects its input pin to GND when you close it.
+contacts = [Button(10), Button(0), Button(1)]
+notes = [262, 330, 392]  # Change these pitches. One per contact.
+
+try:
+    while True:
+        pitch = None
+        for contact, note in zip(contacts, notes):
+            if contact.is_pressed:
+                pitch = note
+                break  # First closed contact wins; one note at a time.
+        if pitch is None:
+            buzzer.off()
+        else:
+            buzzer.freq = pitch
+            buzzer.on()
+        sleep(0.01)
+finally:
+    buzzer.off()
+`;

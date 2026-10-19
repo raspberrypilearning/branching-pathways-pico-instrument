@@ -13,11 +13,14 @@ not connect to or inspect hardware.
 
 After that, the parts hub is open in any order:
 
-- Make the body: Mark's foil-pick guitar, conductive-thread violin or an original design.
+- Make the body: cut/fold/join, adapt an object, wrap/stitch/stuff, or follow an idea.
+  Techniques can be combined; no named instrument or body type is selected.
 - Choose a sound maker: active buzzer or passive piezo buzzer.
 - Make some sounds: short beeps, editable rhythms and passive-buzzer pitch slides.
-- Make the controls: all 12 Pico Detect cards from Skills Bricks.
-- Bring it together: one input controlling one sound maker, with editable examples.
+- Make the controls: all 12 Pico Detect cards from Skills Bricks, with several
+  control ideas saved together rather than a single exclusive choice.
+- Bring it together: invent a rule, then borrow optional code for one control,
+  two independent actions, or repeated homemade contacts. Keep personal code too.
 - Play and change it: a performance, an optional note and a saved version.
 
 Prerequisites are warnings with links, not locks after the Pico check. Following
@@ -30,7 +33,11 @@ on the page, alongside a runnable adaptation and the relevant kit/pin guidance.
 Body and sound exploration pages retain a component reference area. Setup uses
 Build Lab's instructions, troubleshooting dialogs and six original screenshots.
 
-## Instrument examples
+## Optional inspiration
+
+Guitar and violin are examples, not pathway choices. They live under “Ideas to
+borrow”, separate from the parts hub and body techniques. Learners can borrow
+a contact technique without inheriting a shape, instrument name or playing rule.
 
 The guitar uses fret buttons and a homemade pick switch: foil on the pick is
 connected to GND, and foil on the body to GP2. Contact plays the selected note.
@@ -107,16 +114,23 @@ also refreshes setup-help.js, adapting only project/page names.
 
 - Core tests verify source-asset checksums, project persistence, invalidation,
   escaping, compatibility and pin choices.
-- 74 Python programs pass syntax parsing.
-- 55 complete input/sound and instrument programs pass simulation tests for
-  readings, pitch changes, missing distance echoes, contact notes and shutdown.
+- 760 Python programs pass syntax parsing, including every compatible pair recipe.
+- 55 input/sound and instrument programs and 10 two-control scenarios pass
+  simulation tests for independent actions, pulse and pitch changes, missing
+  echoes, slow temperature probes, contact notes and shutdown.
 - Browser checks cover the setup gate, a body-first route, prerequisite returns,
-  help dialogs, local persistence, export/import, all diagrams and 52 page/viewport
+  open body techniques, multiple kept controls, rule choices, pin conflicts,
+  help dialogs, local persistence, export/import, all diagrams and 66 page/viewport
   combinations at desktop and mobile sizes. Rendered pages were visually checked.
 - These checks do **not** establish physical electrical performance, timing,
   sensor calibration, reliability of conductive materials or accessibility of a
   particular physical build. Real Pico and circuit testing remains outstanding.
-- The generic combined example uses one input and one sound maker. The guitar and
-  violin have their own multi-contact programs; learners can extend their own code.
+- Code recipes are explicitly scoped examples: one control, two different
+  controls, or three repeated contacts. They do not overwrite a learner’s own
+  code or imply that every kept control is included. More elaborate rules remain
+  editable in MicroPython. Two-control recipes support either/both actions, or
+  one action gating pitch/pulse speed from a changing-value second input.
+- Old single-control saves migrate into the control-idea collection without
+  losing notes or code. Old guitar/violin links still open the optional examples.
 - PIR variants share GP16 and sound makers share GP9: choose one of each.
 - The site is static. GitHub Pages publishes the root of `main`.

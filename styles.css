@@ -3,3 +3,5 @@
 /* Keep long code inside its own scrolling panel, including narrow screens. */
 .brick-grid>*{min-width:0}.panel,.choice-card,.input-card,.body-card{min-width:0}.page-title h1{overflow-wrap:break-word}
 main:focus{outline:none}
+.kept-controls{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:10px}.kept-controls li{display:flex;align-items:center;gap:12px;background:var(--mint);border-radius:10px;padding:10px 12px}.kept-controls a{font-weight:700;font-size:14px}.kept-controls .btn{background:transparent}
+main[data-page="body"] .body-grid{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:580px){main[data-page="body"] .body-grid{grid-template-columns:1fr}.kept-controls li{width:100%;justify-content:space-between}}
