@@ -5,7 +5,7 @@
     "source": "https://raspberrypifoundation.github.io/skills-bricks/button/button-pico.html",
     "sourceHash": "cd28727b69366538f3bdf66623aa1c6686acb28c3bfd1038fd3707e16e6765c5",
     "code": "from picozero import Button\n\nbutton = Button(10)\n\npressed = button.is_pressed",
-    "note": "pressed is True or False. No resistor is needed \u2014 picozero switches on the pin's own pull-up. Also button.when_pressed and button.when_released .",
+    "note": "pressed is True or False. No resistor is needed — picozero switches on the pin's own pull-up. Also button.when_pressed and button.when_released .",
     "wiring": "assets/bricks/button-wiring.png",
     "wiringAlt": "Raspberry Pi Pico wired to a push button on a breadboard",
     "component": "assets/bricks/button-component.png",
@@ -110,34 +110,6 @@
     "componentAlt": "A miniature SPDT toggle switch with a metal lever and three pins",
     "componentPreview": "assets/bricks/toggle-switch-component.webp",
     "wiringPreview": "assets/bricks/toggle-switch-wiring.webp"
-  },
-  {
-    "id": "pir",
-    "name": "PIR",
-    "source": "https://raspberrypifoundation.github.io/skills-bricks/pir/pir-pico.html",
-    "sourceHash": "3c1e403477407cce7b4028b2113c3a2b9d3dd92d514f7b9b4e0ab4706fdfe4c6",
-    "code": "from picozero import MotionSensor\n\npir = MotionSensor(16)\n\nmoved = pir.motion_detected",
-    "note": "moved is True or False. Also pir.when_motion and pir.when_no_motion to run a function the moment it changes. Most boards carry two dials that set how sensitive it is and how long OUT stays high.",
-    "wiring": "assets/bricks/pir-wiring.png",
-    "wiringAlt": "PIR motion sensor wired to a Raspberry Pi Pico on a breadboard",
-    "component": "assets/bricks/pir-component.png",
-    "componentAlt": "A PIR motion sensor with a white domed lens on a small circuit board",
-    "componentPreview": "assets/bricks/pir-component.webp",
-    "wiringPreview": "assets/bricks/pir-wiring.webp"
-  },
-  {
-    "id": "am312-pir",
-    "name": "AM312 PIR",
-    "source": "https://raspberrypifoundation.github.io/skills-bricks/am312-pir/am312-pir-pico.html",
-    "sourceHash": "0e81e2fb13526fbb57ea8aa54d7b0433dd4014badd8f1eb0d9a9ed4ee17c035e",
-    "code": "from picozero import MotionSensor\n\npir = MotionSensor(16)\n\nmoved = pir.motion_detected",
-    "note": "moved is True or False. Use pir.when_motion and pir.when_no_motion to run functions when it changes. The AM312 has no sensitivity or delay dials; OUT normally stays high for about two seconds after movement.",
-    "wiring": "assets/bricks/am312-pir-wiring.png",
-    "wiringAlt": "AM312 mini PIR sensor wired to 3V3, GP16 and ground beside a seated Raspberry Pi Pico",
-    "component": "assets/bricks/am312-pir-component.png",
-    "componentAlt": "A tiny AM312 PIR motion sensor module with a white domed lens, green circuit board and three pins",
-    "componentPreview": "assets/bricks/am312-pir-component.webp",
-    "wiringPreview": "assets/bricks/am312-pir-wiring.webp"
   },
   {
     "id": "temperature-sensor",

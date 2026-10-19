@@ -5,7 +5,7 @@ Checked 19 October 2026.
 ## Skills Bricks — Raspberry Pi Foundation
 
 [Current catalogue](https://raspberrypifoundation.github.io/skills-bricks/?platform=pico).
-The 12 Pico Detect cards and active/passive buzzer cards supply the original
+The 10 selected Pico Detect cards and active/passive buzzer cards supply the original
 code snippets, component images and wiring diagrams. Each page links to its
 exact card. `data/bricks.json` records the source-page URL and SHA-256 hash;
 `data/sources.json` records original and preview asset URLs and hashes.

@@ -19,7 +19,7 @@ After that, the parts hub is open in any order:
   and optional steady-signal/two-pitch listening tests to help identify the part.
 - Make some sounds: named notes, sharps, octaves, rests and beat-based phrases
   using picozero `Speaker` on a passive buzzer; also beeps, rhythms and pitch slides.
-- Make the controls: all 12 Pico Detect cards from Skills Bricks, with several
+- Make the controls: 10 Pico Detect cards from Skills Bricks, with several
   control ideas saved together rather than a single exclusive choice.
 - Bring it together: invent a rule, then borrow optional code for one control,
   two independent actions, or repeated homemade contacts. Keep personal code too.
@@ -116,14 +116,14 @@ also refreshes setup-help.js, adapting only project/page names.
 
 - Core tests verify source-asset checksums, project persistence, invalidation,
   escaping, compatibility and pin choices.
-- 764 Python programs pass syntax parsing, including every compatible pair recipe.
-- 55 input/sound and instrument programs and 10 two-control scenarios pass
+- 564 Python programs pass syntax parsing, including every compatible pair recipe.
+- 47 input/sound and instrument programs and 10 two-control scenarios pass
   simulation tests for independent actions, pulse and pitch changes, missing
   echoes, slow temperature probes, contact notes and shutdown.
 - Browser checks cover the setup gate, a body-first route, prerequisite returns,
   open body techniques, multiple kept controls, rule choices, pin conflicts,
   help dialogs, buzzer identification, named-note downloads, local persistence,
-  export/import, all diagrams and 66 page/viewport
+  export/import, all diagrams and 62 page/viewport
   combinations at desktop and mobile sizes. Rendered pages were visually checked.
 - These checks do **not** establish physical electrical performance, timing,
   sensor calibration, reliability of conductive materials or accessibility of a
@@ -135,7 +135,10 @@ also refreshes setup-help.js, adapting only project/page names.
   one action gating pitch/pulse speed from a changing-value second input.
 - Old single-control saves migrate into the control-idea collection without
   losing notes or code. Old guitar/violin links still open the optional examples.
-- PIR variants share GP16 and sound makers share GP9: choose one of each.
+- Sound makers share GP9: choose one at a time.
+- PIR and AM312 are excluded from the instrument component choices. Older saves
+  drop those selections while keeping notes and personal code; old links return
+  to the control chooser.
 - The four new listening/named-note programs were also run against the actual
   picozero implementation with mocked GPIO/time: pitches, rest and note lengths,
   tempo, normal shutdown and interrupted playback passed. This checks the API,

@@ -1,3 +1,4 @@
+const retiredInput=id=>['pir','am312-pir'].includes(id);
 export const KEY='branching-pathways-pico-instrument-v1';
 export const fresh=()=>({version:1,ready:false,checks:{},notes:{},input:null,inputs:[],secondInput:null,sound:null,body:null,behaviour:'hold',pairRule:'either',name:'My instrument',draft:'',page:'home'});
 export function restore(value){
@@ -7,11 +8,17 @@ export function restore(value){
  for(const k of ['name','draft','page','behaviour','pairRule'])if(typeof value[k]==='string')p[k]=value[k].slice(0,k==='draft'?100000:150);
  for(const k of ['checks','notes'])if(value[k]&&typeof value[k]==='object'&&!Array.isArray(value[k]))for(const [a,b]of Object.entries(value[k])){if(!/^[a-z0-9-]{1,80}$/.test(a))continue;if(k==='checks'&&typeof b==='boolean')p[k][a]=b;if(k==='notes'&&typeof b==='string')p[k][a]=b.slice(0,10000);}
  p.inputs=[...new Set((Array.isArray(value.inputs)?value.inputs:[p.input]).filter(x=>typeof x==='string'&&/^[a-z0-9-]{1,60}$/.test(x)))].slice(0,12);
+ const removed=[p.input,p.secondInput,...p.inputs].some(retiredInput);
+ if(retiredInput(p.input))p.input=null;
+ if(retiredInput(p.secondInput))p.secondInput=null;
+ p.inputs=p.inputs.filter(id=>!retiredInput(id));
+ if(removed){p.checks.combined=false;p.checks.play=false;}
+ if(retiredInput(p.page.replace(/^input\//,'')))p.page='inputs';
  return p;
 }
 export function choose(project,key,value){if(project[key]!==value){project[key]=value;project.checks.combined=false;project.checks.play=false;}}
 export function mark(project,key,done){project.checks[key]=done;if(key!=='combined'&&key!=='play'){project.checks.combined=false;project.checks.play=false;}if(key==='combined')project.checks.play=false;}
-export function route(value){const clean=(value||'home').replace(/^#/,'');return /^[a-z0-9/-]+$/.test(clean)?clean:'home';}
+export function route(value){const clean=(value||'home').replace(/^#/,'');if(clean.startsWith('input/')&&retiredInput(clean.slice(6)))return 'inputs';return /^[a-z0-9/-]+$/.test(clean)?clean:'home';}
 export const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 export function toggleInput(project,id){

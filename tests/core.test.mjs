@@ -7,7 +7,7 @@ import {inputs} from '../content.js';
 import {fresh,restore,choose,mark,esc,route} from '../core.js';
 import {combinedCode,inputCode,soundCode,exampleCode,setupCode,namedNoteCode,identifyBuzzerCode} from '../code.js';
 const root=new URL('../',import.meta.url);const cards=JSON.parse(readFileSync(new URL('data/bricks.json',root)));
-test('every supported part has source code, local wiring and provenance',()=>{assert.equal(inputs.length,12);assert.equal(cards.length,14);for(const c of cards){assert.ok(c.code.trim());assert.match(c.source,/raspberrypifoundation/);assert.match(c.sourceHash,/^[0-9a-f]{64}$/);for(const field of ['component','wiring'])assert.ok(existsSync(new URL(c[field],root)));}});
+test('every supported part has source code, local wiring and provenance',()=>{assert.equal(inputs.length,10);assert.equal(cards.length,12);assert.ok(inputs.every(i=>!i.id.includes('pir')));assert.deepEqual(new Set(cards.map(c=>c.id)),new Set([...inputs.map(i=>i.id),'buzzer','passive-buzzer']));for(const c of cards){assert.ok(c.code.trim());assert.match(c.source,/raspberrypifoundation/);assert.match(c.sourceHash,/^[0-9a-f]{64}$/);for(const field of ['component','wiring'])assert.ok(existsSync(new URL(c[field],root)));}});
 test('reused source assets retain their exact bytes',()=>{const m=JSON.parse(readFileSync(new URL('data/sources.json',root)));for(const a of m.assets){if(a.file==='setup-help.js')continue;assert.equal(createHash('sha256').update(readFileSync(new URL(a.file,root))).digest('hex'),a.sha256,a.file);}});
 test('changing components invalidates combined test but preserves notes and code',()=>{const p=fresh();p.notes.body='cardboard';p.draft='my code';p.checks.combined=true;p.checks.play=true;choose(p,'input','button');assert.equal(p.checks.combined,false);assert.equal(p.checks.play,false);assert.equal(p.notes.body,'cardboard');assert.equal(p.draft,'my code');p.checks.combined=true;choose(p,'input','button');assert.equal(p.checks.combined,true);mark(p,'input-button',false);assert.equal(p.checks.combined,false);});
 test('project files round-trip, escape user text and reject unrelated formats',()=>{const p=fresh();p.ready=true;p.notes.body='<img onerror="oops">';p.draft='print("hi")';assert.deepEqual(restore(JSON.parse(JSON.stringify(p))),p);assert.match(esc(p.notes.body),/^&lt;/);assert.throws(()=>restore({version:2}));assert.equal(route('<script>'),'home');assert.equal(restore({version:1,checks:JSON.parse('{"__proto__":true}')}).checks.__proto__,Object.prototype);});
@@ -24,7 +24,7 @@ test('control ideas accumulate, migrate from older saves and preserve personal w
  const old=restore({version:1,input:'button',body:'guitar',draft:'keep me',notes:{'body-guitar':'my foil'}});assert.deepEqual(old.inputs,['button']);assert.equal(old.draft,'keep me');assert.equal(old.notes['body-guitar'],'my foil');
 });
 test('pair recipes reject pin clashes and unsupported pitch rules',async()=>{
- const {pairIssue,pairCode}=await import('../code.js');assert.match(pairIssue('button','button'),/same pins/);assert.match(pairIssue('pir','am312-pir'),/GP16/);
+ const {pairIssue,pairCode}=await import('../code.js');assert.match(pairIssue('button','button'),/same pins/);assert.match(pairIssue('pir','am312-pir'),/Choose two controls/);
  assert.throws(()=>pairCode('pir','am312-pir','buzzer'));assert.throws(()=>pairCode('button','toggle-switch','passive-buzzer','pitch'));assert.throws(()=>pairCode('button','potentiometer','buzzer','pitch'));
 });
 test('every compatible pair recipe and repeated-contact example parses as Python',async()=>{
@@ -39,4 +39,10 @@ test('two-control rules respond independently, handle missing values and silence
  for(const rule of ['either','both'])cases.push({first:'button',second:'distance',sound:'buzzer',rule,code:pairCode('button','distance','buzzer',rule)});
  for(const [first,second]of [['temperature-sensor','temperature-probe'],['temperature-probe','temperature-sensor']])cases.push({first,second,sound:'passive-buzzer',rule:'pitch',code:pairCode(first,second,'passive-buzzer','pitch')});
  const r=spawnSync(process.env.PYTHON||'python3',['tests/pair-runtime.py'],{input:JSON.stringify(cases),encoding:'utf8'});assert.equal(r.status,0,r.stdout+r.stderr);console.log(r.stdout.trim());
+});
+
+test('retired PIR choices migrate without losing notes or personal code',()=>{
+ const p=restore({version:1,ready:true,input:'pir',secondInput:'am312-pir',inputs:['button','pir','potentiometer','am312-pir'],page:'input/pir',checks:{combined:true,play:true,'input-button':true},notes:{'input-pir':'keep this observation',body:'cardboard'},draft:'my own program'});
+ assert.deepEqual(p.inputs,['button','potentiometer']);assert.equal(p.input,null);assert.equal(p.secondInput,null);assert.equal(p.page,'inputs');assert.equal(p.checks.combined,false);assert.equal(p.checks.play,false);assert.equal(p.checks['input-button'],true);assert.equal(p.draft,'my own program');assert.equal(p.notes['input-pir'],'keep this observation');assert.equal(p.notes.body,'cardboard');assert.equal(p.ready,true);
+ for(const id of ['pir','am312-pir']){assert.equal(route('#input/'+id),'inputs');assert.deepEqual(restore({version:1,input:id}).inputs,[]);}
 });

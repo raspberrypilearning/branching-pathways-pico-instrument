@@ -38,7 +38,6 @@ export function exampleCode(kind){
 export function pairIssue(first,second){
  if(!byInput[first]||!byInput[second])return 'Choose two controls to explore this example.';
  if(first===second)return 'These two cards use the same pins. For repeated homemade switches, open “Add more contacts” below.';
- if(['pir','am312-pir'].includes(first)&&['pir','am312-pir'].includes(second))return 'Both PIR cards use GP16. Use one PIR with a different control for this example.';
  return '';
 }
 function readerCode(id,name){

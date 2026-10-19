@@ -5,7 +5,7 @@ from pathlib import Path
 import sys,re,html,json,hashlib,shutil
 ROOT=Path(__file__).resolve().parents[1]
 bricks=Path(sys.argv[1]); lab=Path(sys.argv[2])
-ids=['button','capacitive-touch','potentiometer','ldr','distance','tilt-switch','line-sensor','toggle-switch','pir','am312-pir','temperature-sensor','temperature-probe','buzzer','passive-buzzer']
+ids=['button','capacitive-touch','potentiometer','ldr','distance','tilt-switch','line-sensor','toggle-switch','temperature-sensor','temperature-probe','buzzer','passive-buzzer']
 base='https://raspberrypifoundation.github.io/skills-bricks/'
 records=[]; manifest=[]
 def plain(s):return ' '.join(html.unescape(re.sub('<[^>]+>',' ',s)).split())
