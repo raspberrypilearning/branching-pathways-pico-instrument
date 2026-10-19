@@ -1,0 +1,331 @@
+{
+  "checked": "2026-10-19",
+  "assets": [
+    {
+      "file": "assets/bricks/button-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/button/images/pico-button.png",
+      "sha256": "0f51f7161b35303b3d9475b25637bf3ba497024ee518e8581194388a1115c70b"
+    },
+    {
+      "file": "assets/bricks/button-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/button/images/component-button.png",
+      "sha256": "60bb27994dfc99a05f0a6d3e32f62969abac5b523dd0bb5bc27046bee91b02f5"
+    },
+    {
+      "file": "assets/bricks/button-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/button.webp",
+      "sha256": "905b75369366bddb32bc8e850281c61c1a0750272f957f68a9d2d1e1b0c6b2a3"
+    },
+    {
+      "file": "assets/bricks/button-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/button.webp",
+      "sha256": "eb7344ca6251377559f959880c6cdddf5d6c758bbee75501407225a70caa43c6"
+    },
+    {
+      "file": "assets/bricks/capacitive-touch-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/capacitive-touch/images/pico-capacitive-touch.png",
+      "sha256": "3f638d367f5305134bf3910ef64b072de23367ae75f634c94dfb17ada7230e8f"
+    },
+    {
+      "file": "assets/bricks/capacitive-touch-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/capacitive-touch/images/component-capacitive-touch.png",
+      "sha256": "cd4062f23e83f90f3dc85e2bb800cba51ff491c952caab3084998b417dfa28f9"
+    },
+    {
+      "file": "assets/bricks/capacitive-touch-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/capacitive-touch.webp",
+      "sha256": "4ea4053055350c1df53314e4c1b870e1bdad926eb1a40c77b5a751d5c0bd332a"
+    },
+    {
+      "file": "assets/bricks/capacitive-touch-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/capacitive-touch.webp",
+      "sha256": "799686b54b4287e88a144c62eede7b40077a7b30598cd4a0dd9ae61bfda102d0"
+    },
+    {
+      "file": "assets/bricks/potentiometer-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/potentiometer/images/pico-potentiometer.png",
+      "sha256": "12b11959767de431e1fd963796223aec85920fd0c622eb7e4f5df60601e7d17f"
+    },
+    {
+      "file": "assets/bricks/potentiometer-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/potentiometer/images/component-potentiometer.png",
+      "sha256": "d61ffe0b11e153856f23ac9d6ea9b04f29126888ab1acb57c5639296a80ee992"
+    },
+    {
+      "file": "assets/bricks/potentiometer-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/potentiometer.webp",
+      "sha256": "d09e6ff7f7e4af7a09e95536fcc6c65af5b6c4c2a2181979c6d231ed9b567e16"
+    },
+    {
+      "file": "assets/bricks/potentiometer-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/potentiometer.webp",
+      "sha256": "71906d46503b2ffba507ed14344e22c615268d68e9183afbdc55c72072f515a6"
+    },
+    {
+      "file": "assets/bricks/ldr-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/ldr/images/pico-ldr.png",
+      "sha256": "bf9d9ad1014e69941a4d09a9450594d7335202b7dc17e1f4674406904cc6e109"
+    },
+    {
+      "file": "assets/bricks/ldr-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/ldr/images/component-ldr.png",
+      "sha256": "1eff25fbf319e540ba449e2fcd4a02724deb86b33b9d1adb0bed96e7666cf115"
+    },
+    {
+      "file": "assets/bricks/ldr-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/ldr.webp",
+      "sha256": "b67d307a4ef31a920e05fc1112683ac5f95f1d3bdd6c64a7a3193f89bf4ae448"
+    },
+    {
+      "file": "assets/bricks/ldr-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/ldr.webp",
+      "sha256": "a70d31f3a7c5d8004654c99e6271a4e7c865b16320c8517369fae0808f584427"
+    },
+    {
+      "file": "assets/bricks/distance-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/distance/images/pico-srf05.png",
+      "sha256": "424e333fc0dc581d55898caf0c03727ec794bdf6fec2fd287513892e4dc6c4fb"
+    },
+    {
+      "file": "assets/bricks/distance-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/distance/images/component-distance.png",
+      "sha256": "8662c492371c329e3187e1c61910abb346b53759d684b8d6ad58cceeb0a9bf1a"
+    },
+    {
+      "file": "assets/bricks/distance-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/distance.webp",
+      "sha256": "81c2e83c67a5a564ccdde4e0836d59f1db6f8252c941bda850f20c00181fa12a"
+    },
+    {
+      "file": "assets/bricks/distance-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/distance.webp",
+      "sha256": "308999e5d3903658a56ffd4da0136843e38caa99b53705f5f5a377415422717e"
+    },
+    {
+      "file": "assets/bricks/tilt-switch-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/tilt-switch/images/pico-tilt-switch.png",
+      "sha256": "809cf894f688a1c2d07aacd56a8e4c3679ce5123c593fc4e993a9f4ea81c86d3"
+    },
+    {
+      "file": "assets/bricks/tilt-switch-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/tilt-switch/images/component-tilt-switch.png",
+      "sha256": "1ce59aaae71291c241bacc12e7c00dc635070af8740ec89b24f14c9acf175b8f"
+    },
+    {
+      "file": "assets/bricks/tilt-switch-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/tilt-switch.webp",
+      "sha256": "d0ff57c9bf5d3b2746601c22cedd2c499f597a720d8584b210f85c89af2a36ac"
+    },
+    {
+      "file": "assets/bricks/tilt-switch-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/tilt-switch.webp",
+      "sha256": "38eed9e4f8651c6e87296ba63802df00e742da2cf216a7654608698f6a95d6c1"
+    },
+    {
+      "file": "assets/bricks/line-sensor-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/line-sensor/images/pico-line-sensor.png",
+      "sha256": "bec6652390c2cab710f81ff08ec9f8446dc8f2d54f2b08edccd55fe7e1d0118e"
+    },
+    {
+      "file": "assets/bricks/line-sensor-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/line-sensor/images/component-line-sensor.png",
+      "sha256": "29c928985990d9b3493da9e8c5d0af18303cdb3bf52be3f41634d6798e107dee"
+    },
+    {
+      "file": "assets/bricks/line-sensor-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/line-sensor.webp",
+      "sha256": "14e9e50c852094c7801815a6458841c6307d7f8fbdef78953e1550d44499b60d"
+    },
+    {
+      "file": "assets/bricks/line-sensor-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/line-sensor.webp",
+      "sha256": "1b75e7bcd4f26305be31aca3e646bca4cbe86fe7c16b8e4f7422a58d5fe0e02e"
+    },
+    {
+      "file": "assets/bricks/toggle-switch-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/toggle-switch/images/pico-toggle-switch.png",
+      "sha256": "78ccc9266d1d0a110bbafb41d9f7c6ce8c6bd017da72e372289e236620a90011"
+    },
+    {
+      "file": "assets/bricks/toggle-switch-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/toggle-switch/images/component-toggle-switch.png",
+      "sha256": "2d64bc134b67b7a7aeca47683b3e7ed46d8d75067ce392748dee129c0d04104a"
+    },
+    {
+      "file": "assets/bricks/toggle-switch-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/toggle-switch.webp",
+      "sha256": "81bfa13a5fecd4c711514f10cdc49e84bca4cce288fabb41f9f527269929cfeb"
+    },
+    {
+      "file": "assets/bricks/toggle-switch-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/toggle-switch.webp",
+      "sha256": "d2bcff5128cc7bbfea36daf0b018206d20f8ff5c60f9a891a69be9e3fd4b2b80"
+    },
+    {
+      "file": "assets/bricks/pir-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/pir/images/pico-pir.png",
+      "sha256": "fd234b3419a7b2c00a4d293dd0d6cb5e20e65efd357b58c5c8601ead2252f73e"
+    },
+    {
+      "file": "assets/bricks/pir-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/pir/images/component-pir.png",
+      "sha256": "ff32994dee1d465ad12ab97deb928b80e6aa9dd7798b62052d8f097bf9d94dcb"
+    },
+    {
+      "file": "assets/bricks/pir-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/pir.webp",
+      "sha256": "a0c7d81eefdaccdc7ed5e89e2e932c08104b7f5c5604d2e3edecd7b84303d2a7"
+    },
+    {
+      "file": "assets/bricks/pir-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/pir.webp",
+      "sha256": "489944a028c60657fb8b450f2cddb2d88d5671b142698cbf9dabba65fd708136"
+    },
+    {
+      "file": "assets/bricks/am312-pir-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/am312-pir/images/pico-am312-pir.png",
+      "sha256": "fe2ec888d01a621f49846fa96accab1bb09a5de390f1f6bddf84d67169ac5a08"
+    },
+    {
+      "file": "assets/bricks/am312-pir-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/am312-pir/images/component-am312-pir.png",
+      "sha256": "d9970b456f93cb5fb5f57a2bb30a1aac8176be017d4f8b60352307735e51110f"
+    },
+    {
+      "file": "assets/bricks/am312-pir-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/am312-pir.webp",
+      "sha256": "eedc55079fa16250d1e8be0ffbb0c015a38de91e58d0db5b0ec3a916def24376"
+    },
+    {
+      "file": "assets/bricks/am312-pir-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/am312-pir.webp",
+      "sha256": "f61231fc76a539c31d7e4c42a59521684271db73b999bd6b7be6a6f26fc2dd01"
+    },
+    {
+      "file": "assets/bricks/temperature-sensor-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/temperature-sensor/images/pico-temperature-sensor.png",
+      "sha256": "b37e2d5e5e6feae4fbdcf4e9c55231201759afc69cfa9b833bc54de1d21ab113"
+    },
+    {
+      "file": "assets/bricks/temperature-sensor-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/temperature-sensor/images/component-temperature-sensor.png",
+      "sha256": "ca2ff3b9ea205405522ee473eb5bdf3e99a131a2aee77e9fdf41b4b9dc55d7d7"
+    },
+    {
+      "file": "assets/bricks/temperature-sensor-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/temperature-sensor.webp",
+      "sha256": "9771edf783dab3aebb5bef7dd6a742d58b5f185f5ed788d54ae115b5d45f7ae8"
+    },
+    {
+      "file": "assets/bricks/temperature-sensor-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/temperature-sensor.webp",
+      "sha256": "392254352b25e6972b1781f739a1d8c810256fd2f3223e30cec9ad701a1b6c89"
+    },
+    {
+      "file": "assets/bricks/temperature-probe-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/temperature-probe/images/pico-temperature-probe.png",
+      "sha256": "6255b38beac83b93de1a600d56912177aefdaf82858312b2ef7b2c83a9763b76"
+    },
+    {
+      "file": "assets/bricks/temperature-probe-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/temperature-probe/images/component-temperature-probe.png",
+      "sha256": "1e300771d4cc0476bc7182616cebc59730b2bde7738b46c7a86f70e25acd6624"
+    },
+    {
+      "file": "assets/bricks/temperature-probe-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/temperature-probe.webp",
+      "sha256": "348bbbdd2e6c45af6fb87e342a5ee90f2060bd40270acbb2f2241cf360bd8306"
+    },
+    {
+      "file": "assets/bricks/temperature-probe-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/temperature-probe.webp",
+      "sha256": "7b113e8d7364ddb32a0685ecaa042ea03088272c1c4cb7725fb2f218fde892f4"
+    },
+    {
+      "file": "assets/bricks/buzzer-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/buzzer/images/pico-buzzer.png",
+      "sha256": "d86c3dd52aa0a88bc14e7d8a65b884e1b01b5470407018c160d0dd31f70f1f9c"
+    },
+    {
+      "file": "assets/bricks/buzzer-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/buzzer/images/component-buzzer.png",
+      "sha256": "468c65e6745386414cae7824890c941530e79bc7b1625d2198d265a06b88195b"
+    },
+    {
+      "file": "assets/bricks/buzzer-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/buzzer.webp",
+      "sha256": "f0b09c66ceadf1fce4369bfa4edbc8a25ef8dd08bb114069fcc45806e8b6f584"
+    },
+    {
+      "file": "assets/bricks/buzzer-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/buzzer.webp",
+      "sha256": "a18f9514d07cfe16faa921c621cff01308f3683212c0d794b94be79469c73a3d"
+    },
+    {
+      "file": "assets/bricks/passive-buzzer-wiring.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/passive-buzzer/images/pico-buzzer.png",
+      "sha256": "d86c3dd52aa0a88bc14e7d8a65b884e1b01b5470407018c160d0dd31f70f1f9c"
+    },
+    {
+      "file": "assets/bricks/passive-buzzer-component.png",
+      "source": "https://raspberrypifoundation.github.io/skills-bricks/passive-buzzer/images/component-passive-buzzer.png",
+      "sha256": "3dc1e28bb72b02b13efbd4ad5540db513da767e3d99d83c20337f264ab0a951c"
+    },
+    {
+      "file": "assets/bricks/passive-buzzer-component.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/components/passive-buzzer.webp",
+      "sha256": "9c3c94f2bdbc409aafdb840c80b604b13754aeb0a557a9e162a2902799b3f0c3"
+    },
+    {
+      "file": "assets/bricks/passive-buzzer-wiring.webp",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/wiring/passive-buzzer.webp",
+      "sha256": "a18f9514d07cfe16faa921c621cff01308f3683212c0d794b94be79469c73a3d"
+    },
+    {
+      "file": "assets/setup/pico-top-plug.png",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/setup/pico-top-plug.png",
+      "sha256": "9bfda7965d96690848a496e03e33b1b56b8c087980eafec7b4a5ad5665c304fd"
+    },
+    {
+      "file": "assets/setup/plug-in-pico.png",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/setup/plug-in-pico.png",
+      "sha256": "54f54d391bab415465f855afc705aea641f9f4cf65da8b5a4e182d28df935e68"
+    },
+    {
+      "file": "assets/setup/thonny-switch-interpreter.jpg",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/setup/thonny-switch-interpreter.jpg",
+      "sha256": "f2fc6e7d964a0019febb177cfbebb5bd35a43a19d5abe02d798ec2b0cc205c8a"
+    },
+    {
+      "file": "assets/setup/thonny-manage-packages.jpg",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/setup/thonny-manage-packages.jpg",
+      "sha256": "66d3805dd5b5f56d254d064a7fa1f86bb7cbac7dd5fb356c7e91687b080d9db4"
+    },
+    {
+      "file": "assets/setup/thonny-packages-picozero.jpg",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/setup/thonny-packages-picozero.jpg",
+      "sha256": "e4d2713701141da5fdcc4e4c717fc8603acbf654d6adcf811cc55a54c0889515"
+    },
+    {
+      "file": "assets/setup/thonny-install-package.jpg",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/setup/thonny-install-package.jpg",
+      "sha256": "d950599dc52d21a65a3c2e9c7bb6e7426281b57b7440942160c1329b70bcf091"
+    },
+    {
+      "file": "assets/setup/picozero-LICENSE.txt",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/setup/picozero-LICENSE.txt",
+      "sha256": "97e3b0050f9a10bef7c5057d38dc19c4219fbc763c7186ed660e0646539e6120"
+    },
+    {
+      "file": "assets/setup/README.md",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/assets/setup/README.md",
+      "sha256": "98e208dd72598f67a8f1ab48ce8e2a321b80e82d71ab129b866ed5ec10a8e0c1"
+    },
+    {
+      "file": "setup-help.js",
+      "source": "https://raspberrypilearning.github.io/pick-a-part/pico-setup.js",
+      "sha256": "8a0f673686849a886e0a3a3d506b134b10192df66867333c2aa25c7cee21f237"
+    }
+  ],
+  "setupAdaptation": "setup-help.js changes project/page names only; sourceHash is the original hash."
+}

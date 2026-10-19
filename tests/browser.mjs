@@ -1,0 +1,33 @@
+const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
+import assert from 'node:assert/strict';
+import {mkdir,readFile} from 'node:fs/promises';
+import {inputs} from '../content.js';
+const base=process.env.TEST_URL||'http://127.0.0.1:4174/';
+const browser=await chromium.launch({headless:true});const context=await browser.newContext({viewport:{width:1440,height:1050},acceptDownloads:true});const page=await context.newPage();const errors=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.url().startsWith(base)&&r.status()>=400)errors.push(`${r.status()} ${r.url()}`);});
+await mkdir('outputs',{recursive:true});
+const visit=async r=>{await page.goto(base+'#'+r);await page.locator('h1').waitFor();};
+try{
+ await visit('home');await page.locator('.skip').focus();await page.keyboard.press('Enter');assert.equal(await page.locator('main').evaluate(el=>el===document.activeElement),true);assert.equal(new URL(page.url()).hash,'#home');await page.screenshot({path:'outputs/home-desktop.png',fullPage:true});
+ await visit('body/guitar');assert.match(await page.locator('h1').innerText(),/quick check/);
+ await page.getByRole('link',{name:'Open the starter & check your Pico'}).click();
+ await page.locator('[data-action="ready"]').click();assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('branching-pathways-pico-instrument-v1')).ready),false);
+ await page.locator('[data-setup-help="connect"]').click();assert.equal(await page.locator('#setup-dialog').evaluate(d=>d.open),true);await page.keyboard.press('Escape');assert.equal(await page.locator('#setup-dialog').evaluate(d=>d.open),false);
+ for(const topic of ['firmware','library','connection']){await page.locator(`[data-setup-help="${topic}"]`).first().click();await page.locator('#setup-dialog .setup-return button').click();}
+ await page.locator('#starter-open').check();await page.locator('#pico-tested').check();await page.locator('[data-action="ready"]').click();await page.waitForURL('**/#body/guitar');await page.locator('main[data-page="body/guitar"]').waitFor();
+ assert.equal(await page.locator('[data-brick]').count(),2);assert.equal(await page.locator('.warning').count(),1);
+ await page.locator('[data-prereq][href="#input/button"]').click();await page.waitForURL('**/#input/button');await page.locator('[data-check="input-button"]').check();await page.locator('[data-action="return"]').click();await page.waitForURL('**/#body/guitar');await page.locator('main[data-page="body/guitar"]').waitFor();assert.equal(await page.locator('.warning li').count(),1);
+ await page.locator('[data-prereq]').click();await page.waitForURL('**/#sound/passive-buzzer');await page.locator('[data-check="sound-passive-buzzer"]').check();await page.locator('[data-action="return"]').click();await page.waitForURL('**/#body/guitar');await page.locator('main[data-page="body/guitar"]').waitFor();assert.equal(await page.locator('.warning').count(),0);
+ await page.locator('[data-note="body-guitar"]').fill('Keep the foil pick — <b>my idea</b>');await page.reload();await page.locator('h1').waitFor();assert.equal(await page.locator('[data-note="body-guitar"]').inputValue(),'Keep the foil pick — <b>my idea</b>');
+ await visit('hub');await page.screenshot({path:'outputs/hub-desktop.png',fullPage:true});
+ await visit('combine');await page.locator('[data-choice="input"]').selectOption('potentiometer');await page.locator('[data-choice="sound"]').selectOption('buzzer');assert.equal(await page.locator('option[value="pitch"]').count(),0);await page.locator('[data-choice="sound"]').selectOption('passive-buzzer');await page.locator('[data-choice="behaviour"]').selectOption('pitch');assert.match(await page.locator('.code-block').first().innerText(),/buzzer.freq/);
+ await page.locator('[data-check="combined"]').check();await page.locator('[data-draft]').fill('print("my instrument")');await page.reload();await page.locator('h1').waitFor();assert.equal(await page.locator('[data-draft]').inputValue(),'print("my instrument")');assert.equal(await page.locator('[data-check="combined"]').isChecked(),false);
+ await visit('play');await page.locator('[data-name]').fill('<img src=x onerror=alert(1)>');const saved=page.waitForEvent('download');await page.locator('[data-action="export"]').last().click();const dl=await saved;const exported=JSON.parse(await readFile(await dl.path(),'utf8'));assert.equal(exported.name,'<img src=x onerror=alert(1)>');assert.equal(exported.draft,'print("my instrument")');
+ await page.locator('#project-file').setInputFiles({name:'project.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(exported))});await page.waitForTimeout(100);assert.equal(await page.locator('[data-name]').inputValue(),exported.name);assert.equal(await page.locator('img[src="x"]').count(),0);
+ await page.locator('#project-file').setInputFiles({name:'wrong.json',mimeType:'application/json',buffer:Buffer.from('{"version":99}')});await page.waitForTimeout(100);assert.equal(await page.locator('[data-name]').inputValue(),exported.name);
+ const routes=['home','setup','hub','body','body/own','body/guitar','body/violin','sound','sound/buzzer','sound/passive-buzzer','sounds','inputs',...inputs.map(i=>'input/'+i.id),'combine','play'];
+ let checks=0;
+ for(const width of [1440,390]){await page.setViewportSize({width,height:950});for(const route of routes){await visit(route);await page.locator('footer').scrollIntoViewIfNeeded();await page.evaluate(async()=>{await Promise.all([...document.images].map(i=>i.decode().catch(()=>{})));});const broken=await page.locator('img').evaluateAll(imgs=>imgs.filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src));assert.deepEqual(broken,[],route);const size=await page.evaluate(()=>({actual:document.documentElement.scrollWidth,viewport:innerWidth}));assert.ok(size.actual<=size.viewport+1,`${route} ${width}: ${JSON.stringify(size)}`);if(!['home','setup','hub'].includes(route))assert.ok(await page.locator('[data-brick]').count()>0,route);checks++;}}
+ await visit('hub');await page.screenshot({path:'outputs/hub-mobile.png',fullPage:true});await visit('input/line-sensor');await page.screenshot({path:'outputs/input-mobile.png',fullPage:true});await page.setViewportSize({width:1440,height:1000});await visit('body/violin');await page.screenshot({path:'outputs/violin-desktop.png',fullPage:true});
+ assert.deepEqual(errors,[]);console.log(`PASS: setup gate; body-first path; setup dialogs; prerequisite return; saved choices/notes/code; active/passive behaviour; export/import; ${checks} responsive page checks; diagrams; no browser errors.`);
+}finally{await browser.close();}
