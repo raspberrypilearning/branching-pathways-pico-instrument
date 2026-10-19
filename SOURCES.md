@@ -59,3 +59,16 @@ and [Speaker API](https://picozero.readthedocs.io/en/latest/api.html#speaker).
 The maintained implementation confirms lowercase sharp note names, empty-string
 rests and note lengths in seconds. The new phrase is an editable project example;
 the original Skills Bricks snippets and wiring remain unchanged.
+
+## Musical starting points
+
+The note groups use standard major/minor triads, major pentatonic, blues and
+whole-tone scales, written with picozero-compatible sharp note names.
+Scale structures were checked against Open Music Theory's
+[pentatonic collection](https://viva.pressbooks.pub/openmusictheory/chapter/intro-to-diatonic-modes-and-the-chromatic-scale/)
+and [blues scale](https://viva.pressbooks.pub/openmusictheory/chapter/blues-melodies-and-the-blues-scale/),
+and the University of Puget Sound's
+[table of scales](https://musictheory.pugetsound.edu/mt21c/JazzScales.html).
+The style and mood descriptions are original creative prompts, not fixed meanings
+or promises about how a listener will hear a phrase. The examples describe
+successive notes on one buzzer, not simultaneous chords.
