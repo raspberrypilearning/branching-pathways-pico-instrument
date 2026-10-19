@@ -52,3 +52,10 @@ illustration is new inline SVG and is not a wiring diagram.
 
 API behaviour was checked against the maintained
 [picozero source](https://picozero.readthedocs.io/en/latest/_modules/picozero/picozero.html).
+
+The buzzer distinction and named-note route were checked against picozero's
+[Buzzer and Speaker recipes](https://picozero.readthedocs.io/en/latest/recipes.html#buzzer)
+and [Speaker API](https://picozero.readthedocs.io/en/latest/api.html#speaker).
+The maintained implementation confirms lowercase sharp note names, empty-string
+rests and note lengths in seconds. The new phrase is an editable project example;
+the original Skills Bricks snippets and wiring remain unchanged.

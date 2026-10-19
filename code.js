@@ -123,3 +123,52 @@ try:
 finally:
     buzzer.off()
 `;
+
+export function identifyBuzzerCode(test='steady'){
+ if(!['steady','pitches'].includes(test))throw Error('Choose a buzzer listening test.');
+ const body=test==='steady'?'    buzzer.on()\n    sleep(0.5)':`    for pitch in (500, 1000):
+        buzzer.freq = pitch
+        buzzer.on()
+        sleep(0.4)
+        buzzer.off()
+        sleep(0.2)`;
+ return `# Only for a small buzzer confirmed suitable for direct 3.3 V GPIO drive.
+# Same wiring for both tests: + to GP9 (pin 12), - to GND (pin 13).
+${soundHead(test==='steady'?'buzzer':'passive-buzzer')}
+from time import sleep
+
+try:
+${body}
+finally:
+    buzzer.off()
+    buzzer.close()
+`;
+}
+export function namedNoteCode(pattern='note'){
+ if(!['note','tune'].includes(pattern))throw Error('Choose a note or tune.');
+ const tune=pattern==='tune';
+ return `# Passive piezo buzzer: GP9 (pin 12) and GND (pin 13).
+# Use Speaker instead of PWMBuzzer to play note names on the same buzzer.
+from picozero import Speaker
+
+buzzer = Speaker(9, duty_factor=32768)
+${tune?`
+tempo = 120  # Beats per minute: change this to play faster or slower.
+beat = 60 / tempo
+# Each pair is (note name, length in seconds). An empty name is a rest.
+my_tune = [
+    ("c4", beat),
+    ("e4", beat / 2),
+    ("g4", beat / 2),
+    ("", beat),
+    ("f#4", beat),
+    ("c5", beat * 2),
+]
+`:''}
+try:
+    ${tune?'buzzer.play(my_tune)':'buzzer.play("c4", duration=0.5)'}
+finally:
+    buzzer.off()
+    buzzer.close()
+`;
+}
