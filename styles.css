@@ -7,3 +7,12 @@ main:focus{outline:none}
 main[data-page="body"] .body-grid{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:580px){main[data-page="body"] .body-grid{grid-template-columns:1fr}.kept-controls li{width:100%;justify-content:space-between}}
 
 .buzzer-guide>summary{font-size:23px;font-weight:750;line-height:1.25;cursor:pointer;letter-spacing:-.025em}.buzzer-guide[open]>summary{margin-bottom:20px}.listen-test{margin-top:20px;border-top:1px solid var(--line);padding-top:18px}.listen-test>summary{cursor:pointer;font-weight:700;color:var(--blue)}.listen-test[open]>summary{margin-bottom:16px}.musical-notes h3{margin-top:25px}.buzzer-guide td{vertical-align:top}.buzzer-guide th:first-child{min-width:110px}.buzzer-guide td{min-width:155px}
+.lesson-detail,.source-code{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:18px 0;background:#fff}
+.lesson-detail>summary,.source-code>summary{cursor:pointer;font-weight:750;color:var(--blue)}
+.lesson-detail[open]>summary,.source-code[open]>summary{margin-bottom:14px}
+.source-code{margin:0;min-width:0}.source-code .code-block{margin-top:12px}
+.note-palettes{padding-left:20px;margin:12px 0 16px}.note-palettes li{margin-bottom:10px}
+.references>summary{cursor:pointer;font-weight:750;line-height:1.2;letter-spacing:-.035em}
+.references[open]>summary{margin-bottom:16px}
+.optional-note{margin:22px 0}.optional-note>summary{cursor:pointer;color:var(--blue);font-weight:700}
+.optional-note[open]>summary{margin-bottom:12px}
