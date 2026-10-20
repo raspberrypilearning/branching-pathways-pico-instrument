@@ -2,9 +2,9 @@
 
 The **passive** buzzer can play note names such as `"c4"`, `"f#4"` and `"c5"`. Play notes one at a time; `""` makes a rest.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you wired and tested [3B - Passive buzzer](3B%20-%20Passive%20buzzer.md)? An active buzzer cannot play different pitches.
+> Have you wired and tested [3B - Passive buzzer](3B%20-%20Passive%20buzzer.md)? An active buzzer cannot play different pitches.
 
 ## Step 1
 

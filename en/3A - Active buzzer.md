@@ -2,9 +2,9 @@
 
 An **active** buzzer has a built-in oscillator. It makes one pitch; you choose its rhythm and length. It cannot play different notes. Look for *active* or *built-in oscillator* on the packet.
 
-> [!TIP]
+> [!CAUTION]
 >
-First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). Unplug before wiring.
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). Unplug before wiring.
 
 ## Step 1
 

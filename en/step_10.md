@@ -2,9 +2,9 @@
 
 Make a passive buzzer climb, fall or wobble between pitches.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you wired and tested [3B - Passive buzzer](3B%20-%20Passive%20buzzer.md)? An active buzzer keeps its built-in pitch.
+> Have you wired and tested [3B - Passive buzzer](3B%20-%20Passive%20buzzer.md)? An active buzzer keeps its built-in pitch.
 
 ## Step 1
 

@@ -2,9 +2,9 @@
 
 Finish this rule: **When I …, the buzzer …**. A control can start a sound, stop it or change it.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you tested your chosen control and buzzer separately? If not, return to their pages in groups 5 and 3, then come back. The code below uses a [button](5A%20-%20Press%20or%20squeeze.md) and [passive buzzer](3B%20-%20Passive%20buzzer.md) as one example; your instrument can use other parts.
+> Have you tested your chosen control and buzzer separately? If not, return to their pages in groups 5 and 3, then come back. The code below uses a [button](5A%20-%20Press%20or%20squeeze.md) and [passive buzzer](3B%20-%20Passive%20buzzer.md) as one example; your instrument can use other parts.
 
 ## Step 1
 

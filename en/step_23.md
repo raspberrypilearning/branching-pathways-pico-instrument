@@ -2,9 +2,9 @@
 
 A button, two pieces of foil or conductive thread can all make a switch. Put contacts where they suit **your** playing movement.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you tested one [button or homemade switch](5A%20-%20Press%20or%20squeeze.md) and a [passive buzzer](3B%20-%20Passive%20buzzer.md)? Repeat the switch circuit only after that first test works.
+> Have you tested one [button or homemade switch](5A%20-%20Press%20or%20squeeze.md) and a [passive buzzer](3B%20-%20Passive%20buzzer.md)? Repeat the switch circuit only after that first test works.
 
 ## Step 1
 

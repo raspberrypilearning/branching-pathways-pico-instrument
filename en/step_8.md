@@ -2,9 +2,9 @@
 
 Any buzzer can make a rhythm. Change the lengths of the sound and the silence.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you connected and tested an [active buzzer](3A%20-%20Active%20buzzer.md) or [passive buzzer](3B%20-%20Passive%20buzzer.md)? You can read this page first, then return to test it.
+> Have you connected and tested an [active buzzer](3A%20-%20Active%20buzzer.md) or [passive buzzer](3B%20-%20Passive%20buzzer.md)? You can read this page first, then return to test it.
 
 ## Step 1
 

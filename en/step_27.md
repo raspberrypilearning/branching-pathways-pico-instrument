@@ -2,9 +2,9 @@
 
 Borrow the **pots and pans as switches** idea. Foil-covered chopsticks or pencils become your drumsticks. The pans clang too; the Pico adds electronic sounds.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you tested a [switch](5A%20-%20Press%20or%20squeeze.md) and [passive buzzer](3B%20-%20Passive%20buzzer.md)? Return here when each works.
+> Have you tested a [switch](5A%20-%20Press%20or%20squeeze.md) and [passive buzzer](3B%20-%20Passive%20buzzer.md)? Return here when each works.
 
 ## Step 1
 

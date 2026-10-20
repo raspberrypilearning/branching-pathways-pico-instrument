@@ -2,9 +2,9 @@
 
 Your first playable version can be simple: one action makes a noise you chose.
 
-> [!TIP]
+> [!CAUTION]
 >
-If the sound does not follow your control yet, go back to [6A - Try one control](6A%20-%20Try%20one%20control.md), [6B - Give two controls a job](6B%20-%20Give%20two%20controls%20a%20job.md), or [6C - Put contacts wherever you want](6C%20-%20Put%20contacts%20wherever%20you%20want.md). Their wiring diagrams and code can help you find what is missing.
+> If the sound does not follow your control yet, go back to [6A - Try one control](6A%20-%20Try%20one%20control.md), [6B - Give two controls a job](6B%20-%20Give%20two%20controls%20a%20job.md), or [6C - Put contacts wherever you want](6C%20-%20Put%20contacts%20wherever%20you%20want.md). Their wiring diagrams and code can help you find what is missing.
 
 ## Step 1
 

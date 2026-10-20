@@ -2,9 +2,9 @@
 
 Borrow the **frets plus a pick switch** idea. Your body, notes and playing movement can be different.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you tested a [switch](5A%20-%20Press%20or%20squeeze.md) and [passive buzzer](3B%20-%20Passive%20buzzer.md)? Return here when each works.
+> Have you tested a [switch](5A%20-%20Press%20or%20squeeze.md) and [passive buzzer](3B%20-%20Passive%20buzzer.md)? Return here when each works.
 
 ## Step 1
 

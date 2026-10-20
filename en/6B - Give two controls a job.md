@@ -2,9 +2,9 @@
 
 Two actions can work together. One might start a sound while the other changes its pitch or pulse speed.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you tested both controls and your buzzer? Follow the relevant [control pages](5A%20-%20Press%20or%20squeeze.md) and [buzzer page](3B%20-%20Passive%20buzzer.md), then return. Give each control its own GP pin and share GND.
+> Have you tested both controls and your buzzer? Follow the relevant [control pages](5A%20-%20Press%20or%20squeeze.md) and [buzzer page](3B%20-%20Passive%20buzzer.md), then return. Give each control its own GP pin and share GND.
 
 ## Step 1
 

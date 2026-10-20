@@ -2,9 +2,9 @@
 
 A **passive** buzzer needs a changing signal. You can change its pitch as well as its rhythm. Look for *passive* or *external drive* on the packet. On [4B - Play named notes](4B%20-%20Play%20named%20notes.md), picozero's `Speaker` lets you write `"c4"` instead of a frequency such as `262`.
 
-> [!TIP]
+> [!CAUTION]
 >
-First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). Use only one buzzer on GP9 at a time.
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). Use only one buzzer on GP9 at a time.
 
 ## Step 1
 

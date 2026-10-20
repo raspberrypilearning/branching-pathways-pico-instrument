@@ -2,7 +2,7 @@
 
 A sealed probe can compare warm and cool water.
 
-> [!TIP]
+> [!CAUTION]
 >
 > First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
 

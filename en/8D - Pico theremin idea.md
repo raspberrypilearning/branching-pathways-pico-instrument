@@ -2,9 +2,9 @@
 
 Borrow the **play in the air** idea. A distance sensor can bend the pitch; a dial or second sensor can change the pulse speed. A dial alone is also an option.
 
-> [!TIP]
+> [!CAUTION]
 >
-Have you tested a [distance sensor](5E%20-%20Play%20in%20the%20air.md) or [dial](5C%20-%20Turn%20a%20dial.md), and a [passive buzzer](3B%20-%20Passive%20buzzer.md)? Test only the controls you choose.
+> Have you tested a [distance sensor](5E%20-%20Play%20in%20the%20air.md) or [dial](5C%20-%20Turn%20a%20dial.md), and a [passive buzzer](3B%20-%20Passive%20buzzer.md)? Test only the controls you choose.
 
 ## Step 1
 
