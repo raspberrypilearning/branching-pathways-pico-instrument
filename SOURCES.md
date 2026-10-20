@@ -42,6 +42,13 @@ interpreter image retains its MIT copyright and permission notice in
 
 The parts/approaches structure follows the
 [Platformer branching-pathway prototype](https://raspberrypifoundation.github.io/ccp-branching-pathways-testing/).
+The `en/` Markdown layout, including named options, `step_N.md` copies,
+`pathways.yml`, `meta.yml` and a maintainer pathway map, was checked against
+[raspberrypilearning/branching-pathways-platformer](https://github.com/raspberrypilearning/branching-pathways-platformer)
+at commit `e3b7e77b18933e58ccb1a15f051ad793a6c8de41`. The instrument's
+learner text, route rules and MicroPython examples are written for this project.
+`en/images/` copies the credited setup images and Skills Bricks wiring PNGs
+already present in this repository; it adds no new upstream artwork.
 The shared start and freely ordered parts, prerequisite warnings, guitar,
 violin, drumkit and theremin ideas come from Mark Calleja's brief. The
 single-control, two-control, multi-contact and optional example programs are

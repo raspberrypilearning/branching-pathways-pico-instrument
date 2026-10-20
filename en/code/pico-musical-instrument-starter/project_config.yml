@@ -1,0 +1,4 @@
+name: "Pico Musical Instrument starter"
+identifier: "pico-musical-instrument-starter"
+type: 'python'
+build: false

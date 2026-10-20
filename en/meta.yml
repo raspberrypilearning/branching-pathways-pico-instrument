@@ -1,0 +1,39 @@
+title: Pico Musical Instrument
+hero_image: images/banner.png
+description: Make a musical instrument with a Raspberry Pi Pico by choosing your own body, controls and sounds.
+listed: false
+pdf: false
+landing: true
+steps:
+  - title: '1A - Connect and test your Pico'
+    completion:
+      - engaged
+  - title: '2A - Follow your own idea'
+  - title: '2B - Cut fold and join'
+  - title: '2C - Adapt something you have'
+  - title: '2D - Wrap stitch and stuff'
+  - title: '3A - Active buzzer'
+  - title: '3B - Passive buzzer'
+  - title: '4A - Beeps and rhythms'
+  - title: '4B - Play named notes'
+  - title: '4C - Slide between pitches'
+  - title: '5A - Press or squeeze'
+  - title: '5B - Touch a pad'
+  - title: '5C - Turn a dial'
+  - title: '5D - Play with shadows'
+  - title: '5E - Play in the air'
+  - title: '5F - Tip or rock it'
+  - title: '5G - Pull a pattern through'
+  - title: '5H - Flip a switch'
+  - title: '5I - Play with warmth'
+  - title: '5J - Explore warm and cool'
+  - title: '6A - Try one control'
+  - title: '6B - Give two controls a job'
+  - title: '6C - Put contacts wherever you want'
+  - title: '7A - Play and change it'
+    completion:
+      - internal
+  - title: '8A - Pico guitar idea'
+  - title: '8B - Pico violin idea'
+  - title: '8C - Pico drumkit idea'
+  - title: '8D - Pico theremin idea'

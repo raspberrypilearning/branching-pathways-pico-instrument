@@ -3,7 +3,9 @@
 A branching pathway for making a playable musical instrument with Raspberry Pi
 Pico, MicroPython and picozero. This is a separate project from Build Lab.
 
-**[Open the pathway](https://raspberrypilearning.github.io/branching-pathways-pico-instrument/)**
+The project is a set of [Platformer-format Markdown pathway files](en/README.md) in `en/`: a landing page, route manifest, 28 learner pages, numbered step copies, a page-level flowchart, setup pictures, Skills Bricks wiring diagrams and MicroPython resources. The website at **[Open the interactive prototype](https://raspberrypilearning.github.io/branching-pathways-pico-instrument/)** remains available as a separate preview.
+
+To edit a learner page, change its named file (for example, `en/5C - Turn a dial.md`), then run `python3 scripts/sync-pathway-files.py` to refresh the matching `step_N.md` file. Check the Markdown bundle with `python3 scripts/sync-pathway-files.py --check`.
 
 ## Learner journey
 
@@ -60,13 +62,14 @@ on GP26 and passive buzzer on GP9; a second distance sensor uses GP18/GP19.
 
 ## Run locally
 
-Node.js 20.11 or newer and Python 3 are sufficient for the application and core
-checks. There are no application dependencies or build step.
+The Markdown pathway requires no website build step. To run the separate web
+prototype and its tests, use Node.js 20.11 or newer and Python 3:
 
 ```sh
 node server.mjs
 # Open http://127.0.0.1:4174/
 node --test tests/core.test.mjs
+python3 scripts/sync-pathway-files.py --check
 ```
 
 Use a local server rather than opening `index.html` directly: the app loads its

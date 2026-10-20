@@ -1,0 +1,145 @@
+title: Pico Musical Instrument
+steps_are_files: true
+canonical_step_count: 28
+
+# Group numbers organise the pages; after 1A, they are not a required order.
+groups:
+  - id: 1
+    title: Start here
+    options:
+      - id: 1A
+        file: 1A - Connect and test your Pico.md
+        title: 1A - Connect and test your Pico
+
+  - id: 2
+    title: Make the body
+    options:
+      - id: 2A
+        file: 2A - Follow your own idea.md
+        title: 2A - Follow your own idea
+      - id: 2B
+        file: 2B - Cut fold and join.md
+        title: 2B - Cut fold and join
+      - id: 2C
+        file: 2C - Adapt something you have.md
+        title: 2C - Adapt something you have
+      - id: 2D
+        file: 2D - Wrap stitch and stuff.md
+        title: 2D - Wrap stitch and stuff
+
+  - id: 3
+    title: Choose your sound maker
+    options:
+      - id: 3A
+        file: 3A - Active buzzer.md
+        title: 3A - Active buzzer
+      - id: 3B
+        file: 3B - Passive buzzer.md
+        title: 3B - Passive buzzer
+
+  - id: 4
+    title: Make some sounds
+    options:
+      - id: 4A
+        file: 4A - Beeps and rhythms.md
+        title: 4A - Beeps and rhythms
+      - id: 4B
+        file: 4B - Play named notes.md
+        title: 4B - Play named notes
+      - id: 4C
+        file: 4C - Slide between pitches.md
+        title: 4C - Slide between pitches
+
+  - id: 5
+    title: Make your controls
+    options:
+      - id: 5A
+        file: 5A - Press or squeeze.md
+        title: 5A - Press or squeeze
+      - id: 5B
+        file: 5B - Touch a pad.md
+        title: 5B - Touch a pad
+      - id: 5C
+        file: 5C - Turn a dial.md
+        title: 5C - Turn a dial
+      - id: 5D
+        file: 5D - Play with shadows.md
+        title: 5D - Play with shadows
+      - id: 5E
+        file: 5E - Play in the air.md
+        title: 5E - Play in the air
+      - id: 5F
+        file: 5F - Tip or rock it.md
+        title: 5F - Tip or rock it
+      - id: 5G
+        file: 5G - Pull a pattern through.md
+        title: 5G - Pull a pattern through
+      - id: 5H
+        file: 5H - Flip a switch.md
+        title: 5H - Flip a switch
+      - id: 5I
+        file: 5I - Play with warmth.md
+        title: 5I - Play with warmth
+      - id: 5J
+        file: 5J - Explore warm and cool.md
+        title: 5J - Explore warm and cool
+
+  - id: 6
+    title: Bring it together
+    options:
+      - id: 6A
+        file: 6A - Try one control.md
+        title: 6A - Try one control
+      - id: 6B
+        file: 6B - Give two controls a job.md
+        title: 6B - Give two controls a job
+      - id: 6C
+        file: 6C - Put contacts wherever you want.md
+        title: 6C - Put contacts wherever you want
+
+  - id: 7
+    title: Play and change it
+    options:
+      - id: 7A
+        file: 7A - Play and change it.md
+        title: 7A - Play and change it
+
+  - id: 8
+    title: Optional ideas to borrow
+    options:
+      - id: 8A
+        file: 8A - Pico guitar idea.md
+        title: 8A - Pico guitar idea
+      - id: 8B
+        file: 8B - Pico violin idea.md
+        title: 8B - Pico violin idea
+      - id: 8C
+        file: 8C - Pico drumkit idea.md
+        title: 8C - Pico drumkit idea
+      - id: 8D
+        file: 8D - Pico theremin idea.md
+        title: 8D - Pico theremin idea
+
+# These are examples of order, never compulsory pathways.
+recommended_paths:
+  body_first:
+    - 1A
+    - 2A
+    - 5A
+    - 3B
+    - 6A
+    - 7A
+  sound_first:
+    - 1A
+    - 3B
+    - 4B
+    - 5C
+    - 6A
+    - 7A
+  controls_first:
+    - 1A
+    - 5A
+    - 3A
+    - 4A
+    - 6A
+    - 7A
