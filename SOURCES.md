@@ -54,8 +54,9 @@ violin, drumkit and theremin ideas come from Mark Calleja's brief. The
 single-control, two-control, multi-contact and optional example programs are
 new; they do not claim that any earlier instrument used these exact pins or code.
 
-The palette follows the existing Build Lab Code Club theme. The decorative materials
-illustration is new inline SVG and is not a wiring diagram.
+The palette follows the existing Build Lab Code Club theme. The decorative instrument
+illustration in `assets/instrument-maker.svg` is new SVG, matching the Pico Alarm
+hero's visual style. It is an imagined musical gadget, not a wiring diagram.
 
 API behaviour was checked against the maintained
 [picozero source](https://picozero.readthedocs.io/en/latest/_modules/picozero/picozero.html).

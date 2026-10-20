@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 360" fill="none" stroke="#132b2c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- A made-up musical gadget, drawn in the same style as Pico Alarm. -->
+  <path d="M103 281c-60 28-80-45-43-60 24-10 37 3 28 20" stroke="#46499e"/>
+  <path d="M242 249c75-2 108-60 71-74" stroke="#41b653"/>
+
+  <!-- Cardboard case: three closed faces keep the shape clear at small sizes. -->
+  <path d="M74 150l127-57 93 60-128 65z" fill="#fcdfed"/>
+  <path d="M74 150l92 68v63l-92-68z" fill="#fce4d7"/>
+  <path d="M166 218l128-65v67l-128 61z" fill="#e6e2f4"/>
+  <path d="M88 177l12 9m-12 3l12 9m-12 3l12 9" stroke="#a3264f" stroke-width="3"/>
+
+  <!-- Mix-and-match playing pads and a dial. -->
+  <g transform="rotate(-25 139 148)">
+    <ellipse cx="139" cy="152" rx="24" ry="15" fill="#d8c7a5"/>
+    <ellipse cx="139" cy="146" rx="24" ry="15" fill="#f8f294"/>
+    <path d="M128 145h22m-11-7v14" stroke-width="3"/>
+  </g>
+  <g transform="rotate(-25 193 173)">
+    <ellipse cx="193" cy="177" rx="24" ry="15" fill="#cba2b7"/>
+    <ellipse cx="193" cy="171" rx="24" ry="15" fill="#ef60a3"/>
+    <path d="M182 170h22" stroke-width="3"/>
+  </g>
+  <g transform="rotate(-25 236 143)">
+    <ellipse cx="236" cy="146" rx="22" ry="14" fill="#dbf1e4"/>
+    <path d="M221 143v-13c0-11 30-11 30 0v13c0 11-30 11-30 0z" fill="#41b653"/>
+    <ellipse cx="236" cy="130" rx="15" ry="10" fill="#dbf1e4"/>
+    <path d="M236 130l8-5" stroke-width="3"/>
+  </g>
+  <path d="M177 114l7 6m-1-21l6 10m13-15v10" stroke="#46499e" stroke-width="3"/>
+
+  <!-- Buzzer on the case, with a little burst of sound. -->
+  <g transform="translate(236 222) rotate(-27)">
+    <ellipse rx="23" ry="20" fill="#46499e"/>
+    <path d="M-11-7h22m-22 7h22m-22 7h22" stroke="#fff" stroke-width="3"/>
+  </g>
+  <path d="M287 236l10 1m-8-14l12-3m-18 28l9 6" stroke="#46499e" stroke-width="3"/>
+
+  <!-- Loose foil switch and Pico suggest that the controls can go anywhere. -->
+  <g transform="rotate(-12 91 287)">
+    <rect x="65" y="268" width="53" height="34" rx="7" fill="#dbf1e4"/>
+    <path d="M76 278h29v14H76z" fill="#f7f3ed" stroke-width="3"/>
+    <path d="M82 280l7 5-6 5m12-10l4 10" stroke="#82938d" stroke-width="2"/>
+  </g>
+  <path d="M117 290c12 24 34 20 44 17" stroke="#46499e"/>
+  <g transform="rotate(-10 201 309)">
+    <rect x="158" y="285" width="86" height="48" rx="7" fill="#41b653"/>
+    <path d="M170 291v7m13-7v7m13-7v7m13-7v7m13-7v7m-52 22v7m13-7v7m13-7v7m13-7v7m13-7v7" stroke="#f7f3ed"/>
+    <rect x="185" y="303" width="27" height="13" rx="2" fill="#132b2c" stroke-width="2"/>
+    <path d="M158 301h-8v16h8" fill="#f7f3ed"/>
+  </g>
+
+  <!-- Jaunty notes and motion marks. -->
+  <g transform="rotate(13 345 100)">
+    <path d="M327 114V65l46-10v48M327 77l46-10" stroke="#46499e" stroke-width="5"/>
+    <ellipse cx="315" cy="115" rx="12" ry="8" fill="#46499e" stroke="#46499e"/>
+    <ellipse cx="361" cy="104" rx="12" ry="8" fill="#46499e" stroke="#46499e"/>
+  </g>
+  <path d="M352 172c9-23 16 23 25 0s16 23 25 0" stroke="#a3264f" stroke-width="4"/>
+  <path d="M55 99l7 7 10-13M304 37v12m-6-6h12" stroke="#46499e" stroke-width="3"/>
+</svg>
