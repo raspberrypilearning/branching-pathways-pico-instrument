@@ -1,46 +1,49 @@
-## 3B - Passive buzzer
+## 5F - Tip or rock it
 
-A **passive** buzzer needs a changing signal. You can change its pitch as well as its rhythm. Look for *passive* or *external drive* on the packet. On [4B - Play named notes](4B%20-%20Play%20named%20notes.md), picozero's `Speaker` lets you write `"c4"` instead of a frequency such as `262`.
+A tilt switch notices when you rock the body.
 
 > [!CAUTION]
 >
-> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). Use only one buzzer on GP9 at a time.
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
 
 ## Step 1
 
 > [!TASK]
 >
-Use a small 3.3 V GPIO-compatible passive piezo buzzer. Connect **+ to GP9** (physical pin 12) and **− to GND**.
+> Gather a ball tilt switch and two leads.
 >
-> ![Passive buzzer wiring from Skills Bricks](images/passive-buzzer-wiring.png)
+> Connect GP8 through the switch to GND.
+>
+> ![Tip or rock it wiring diagram from Skills Bricks](images/tilt-switch-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-Try the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/passive-buzzer/passive-buzzer-pico.html):
+> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/tilt-switch/tilt-switch-pico.html) in Thonny:
 >
 > ```python
-> from picozero import PWMBuzzer
+> from picozero import Switch
 >
-> # GP9, 2000 Hz, 50% duty
-> buzzer = PWMBuzzer(9, 2000, 32768)
+> tilt = Switch(8)
 >
-> buzzer.on()
+> tilted = tilt.is_open
 > ```
 >
-> Add these lines underneath so the test stops by itself:
+> Add this underneath to see when your control detects an action:
 >
 > ```python
-> from time import sleep
-> sleep(0.25)
-> buzzer.off()
+> print(tilted)
+> if tilted:
+>     print("Playing action detected!")
 > ```
 
 ## Test
 
 > [!TASK]
 >
-Did you hear a steady tone? Put `buzzer.freq = 440` **before** `buzzer.on()`, then run it again. If the pitch does not change, check whether your part is an [active buzzer](3A%20-%20Active%20buzzer.md).
+> Tip slowly. The reading may flicker while the ball rolls. Try a different action or change the number in the `if` line.
 
-Next, try [named notes](4B%20-%20Play%20named%20notes.md), a [pitch slide](4C%20-%20Slide%20between%20pitches.md), or any control.
+## Make it yours
+
+Make a rocking instrument or a sound creature. Choose another control too if you want; each control needs its own signal pin.

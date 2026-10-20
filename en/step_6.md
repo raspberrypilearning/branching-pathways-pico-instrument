@@ -1,45 +1,51 @@
-## 3A - Active buzzer
+## 5E - Play in the air
 
-An **active** buzzer has a built-in oscillator. It makes one pitch; you choose its rhythm and length. It cannot play different notes. Look for *active* or *built-in oscillator* on the packet.
+Move your hand without touching the instrument.
 
 > [!CAUTION]
 >
-> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). Unplug before wiring.
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
 
 ## Step 1
 
 > [!TASK]
 >
-Use a small 3.3 V GPIO-compatible active buzzer. Connect **+ to GP9** (physical pin 12) and **− to GND**.
+> Gather a 3.3 V-compatible HC-SR04P ultrasonic sensor and four leads.
 >
-> ![Active buzzer wiring from Skills Bricks](images/buzzer-wiring.png)
+> Trig goes to GP20, Echo to GP21, VCC to 3V3 OUT and GND to GND. Use the HC-SR04P, not a 5 V Echo module.
+>
+> ![Play in the air wiring diagram from Skills Bricks](images/distance-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-Try the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/buzzer/buzzer-pico.html):
+> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/distance/distance-pico.html) in Thonny:
 >
 > ```python
-> from picozero import Buzzer
+> from picozero import DistanceSensor
 >
-> buzzer = Buzzer(9)
+> sensor = DistanceSensor(
+>     echo=21, trigger=20
+> )
 >
-> buzzer.on()
+> distance = sensor.distance
 > ```
 >
-> Add these lines underneath so the test stops by itself:
+> Add this underneath to see when your control detects an action:
 >
 > ```python
-> from time import sleep
-> sleep(0.25)
-> buzzer.off()
+> print(distance)
+> if distance is not None and distance < 0.3:
+>     print("Playing action detected!")
 > ```
 
 ## Test
 
 > [!TASK]
 >
-Did you hear a steady beep? If it stayed silent, check the + and − connections. If its pitch changes when you change a number, you probably have a **passive** buzzer; try [3B](3B%20-%20Passive%20buzzer.md).
+> Move your hand in front of the two round parts. The number is metres; None means no echo. Try a different action or change the number in the `if` line.
 
-Try [beeps and rhythms](4A%20-%20Beeps%20and%20rhythms.md) next, or choose a control first.
+## Make it yours
+
+Make different spaces play different notes. Choose another control too if you want; each control needs its own signal pin.

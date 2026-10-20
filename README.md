@@ -13,19 +13,15 @@ Everyone opens and saves the starter, connects a Pico and runs the onboard LED
 and Shell-message check first. The learner confirms the result; the website does
 not connect to or inspect hardware.
 
-After that, the parts hub is open in any order:
+The sidebar offers a suggested route: setup, controls, sound maker, code, body, then play and improve. After setup, every stage remains open in any order:
 
-- Make the body: cut/fold/join, adapt an object, wrap/stitch/stuff, or follow an idea.
-  Techniques can be combined; no named instrument or body type is selected.
-- Choose a sound maker: active buzzer or passive piezo buzzer, with label clues
-  and optional steady-signal/two-pitch listening tests to help identify the part.
-- Make some sounds: named notes, sharps, octaves, rests and beat-based phrases
-  using picozero `Speaker` on a passive buzzer; also beeps, rhythms and pitch slides.
-- Make the controls: 10 Pico Detect cards from Skills Bricks, with several
-  control ideas saved together rather than a single exclusive choice.
-- Bring it together: invent a rule, then borrow optional code for one control,
-  two independent actions, or repeated homemade contacts. Keep personal code too.
-- Play and change it: a performance, an optional note and a saved version.
+- Make the controls: 10 Pico Detect cards from Skills Bricks. Keep one or several ideas.
+- Choose a sound maker: connect and test an active or passive buzzer.
+- Decide with code: join the tested control and sound scripts into one program.
+  The on/off example keeps the input test’s rule and replaces its message with sound.
+  Explore named notes, rhythms, pitch slides, two controls or more contacts within this stage.
+- Make the body: cut/fold/join, adapt an object, wrap/stitch/stuff, or follow your own idea.
+- Play and change it: try this version, improve something and save it.
 
 Prerequisites are warnings with links, not locks after the Pico check. Following
 one keeps a return link to the originating part. Controls can be tested using
@@ -96,8 +92,7 @@ of Build Lab. Save a copy downloads a JSON file; Open a copy validates it and
 backs up the current project before replacement. Work is also downloadable
 before the first test or before any instrument is complete.
 
-A program saved only in Thonny must be saved separately. Pasting it into Bring it
-together includes it in the JSON export. The website stores Python as text and
+A program saved only in Thonny must be saved separately. Pasting it into Decide with code includes it in the JSON export. The website stores Python as text and
 does not execute it. No accounts, analytics or project uploads are used.
 
 Changing a selected component or behaviour clears the combined/assembled test
@@ -125,8 +120,8 @@ also refreshes setup-help.js, adapting only project/page names.
 
 - Core tests verify source-asset checksums, project persistence, invalidation,
   escaping, compatibility and pin choices.
-- 569 Python programs pass syntax parsing, including every compatible pair recipe.
-- 52 input/sound and instrument programs and 10 two-control scenarios pass
+- 589 Python programs pass syntax parsing, including every compatible pair recipe.
+- 72 input/sound and instrument programs and 10 two-control scenarios pass
   simulation tests for independent actions, pulse and pitch changes, missing
   echoes, slow temperature probes, contact notes and shutdown.
 - Browser checks cover the setup gate, a body-first route, prerequisite returns,

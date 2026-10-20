@@ -1,56 +1,23 @@
-## 5J - Explore warm and cool
+## 2A - Follow your own idea
 
-A sealed probe can compare warm and cool water.
-
-> [!CAUTION]
->
-> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
+Start with a sound, playing movement, material or shape. Your body does not need to copy a familiar instrument.
 
 ## Step 1
 
 > [!TASK]
 >
-> Gather a sealed DS18B20 probe, a 4.7 kΩ resistor and leads.
->
-> VDD goes to 3V3, DQ to GP22, GND to GND. Put 4.7 kΩ between DQ and 3V3. Check your probe’s wire colours.
->
-> ![Explore warm and cool wiring diagram from Skills Bricks](images/temperature-probe-wiring.png)
+> Make a quick version of the part that interests you. Try holding or moving it before fixing the Pico in place.
 
 ## Step 2
 
 > [!TASK]
 >
-> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/temperature-probe/temperature-probe-pico.html) in Thonny:
->
-> ```python
-> from machine import Pin
-> import onewire, ds18x20
-> from time import sleep_ms
->
-> bus = onewire.OneWire(Pin(22))
-> sensor = ds18x20.DS18X20(bus)
-> probes = sensor.scan()
-> assert probes, "Check probe wiring"
-> sensor.convert_temp()
-> sleep_ms(750)
-> temperature = sensor.read_temp(probes[0])
-> print(temperature)
-> ```
->
-> Add this underneath to see when your control detects an action:
->
-> ```python
-> print(temperature)
-> if temperature > 25:
->     print("Playing action detected!")
-> ```
+> Leave room for the Pico, USB cable, wires and buzzer. Support the circuit on something removable so you can change it.
 
 ## Test
 
 > [!TASK]
 >
-> Wait for each new reading. Only the sealed tip goes in water; keep the Pico and connections dry. Try a different action or change the number in the `if` line.
+> Pretend to play it. Can you reach the controls? What could move, grow or disappear?
 
-## Make it yours
-
-Make a slow-changing warm/cool sound experiment. Choose another control too if you want; each control needs its own signal pin.
+Choose any control from group 5 and either buzzer from group 3. Use their wiring and code pages. The body can change as you test.

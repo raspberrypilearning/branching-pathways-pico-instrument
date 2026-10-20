@@ -1,51 +1,51 @@
-## 5E - Play in the air
+## 6B - Give two controls a job
 
-Move your hand without touching the instrument.
+Two actions can work together. One might start a sound while the other changes its pitch or pulse speed.
 
 > [!CAUTION]
 >
-> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
+> Have you tested both controls and your buzzer? Follow the relevant [control pages](5A%20-%20Press%20or%20squeeze.md) and [buzzer page](3B%20-%20Passive%20buzzer.md), then return. Give each control its own GP pin and share GND.
 
 ## Step 1
 
 > [!TASK]
 >
-> Gather a 3.3 V-compatible HC-SR04P ultrasonic sensor and four leads.
+This example joins the Skills Bricks **button**, **potentiometer** and **passive buzzer** circuits. A held button starts the sound; the dial changes pitch. GP10 goes through the button to GND; pot middle leg goes to GP26, its ends to 3V3 OUT and GND; buzzer + goes to GP9 and − to GND.
 >
-> Trig goes to GP20, Echo to GP21, VCC to 3V3 OUT and GND to GND. Use the HC-SR04P, not a 5 V Echo module.
+> ![Button wiring](images/button-wiring.png)
 >
-> ![Play in the air wiring diagram from Skills Bricks](images/distance-wiring.png)
+> ![Potentiometer wiring](images/potentiometer-wiring.png)
+>
+> ![Passive buzzer wiring](images/passive-buzzer-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/distance/distance-pico.html) in Thonny:
+Start with the [button](https://raspberrypifoundation.github.io/skills-bricks/button/button-pico.html), [dial](https://raspberrypifoundation.github.io/skills-bricks/potentiometer/potentiometer-pico.html) and [buzzer](https://raspberrypifoundation.github.io/skills-bricks/passive-buzzer/passive-buzzer-pico.html) snippets. Add the rule:
 >
 > ```python
-> from picozero import DistanceSensor
+> from picozero import Button, Pot, PWMBuzzer
+> from time import sleep
 >
-> sensor = DistanceSensor(
->     echo=21, trigger=20
-> )
+> button = Button(10)
+> pot = Pot(26)
+> buzzer = PWMBuzzer(9, 2000, 32768)
 >
-> distance = sensor.distance
-> ```
->
-> Add this underneath to see when your control detects an action:
->
-> ```python
-> print(distance)
-> if distance is not None and distance < 0.3:
->     print("Playing action detected!")
+> try:
+>     while True:
+>         if button.is_pressed:
+>             buzzer.freq = int(220 + pot.value * 660)
+>             buzzer.on()
+>         else:
+>             buzzer.off()
+>         sleep(0.01)
+> finally:
+>     buzzer.off()
 > ```
 
 ## Test
 
 > [!TASK]
 >
-> Move your hand in front of the two round parts. The number is metres; None means no echo. Try a different action or change the number in the `if` line.
-
-## Make it yours
-
-Make different spaces play different notes. Choose another control too if you want; each control needs its own signal pin.
+Hold the button and turn the dial. What happens when you release the button? Try swapping the jobs or inventing a rule with two different controls. If two Skills Bricks cards use the same pin, choose another free pin and change its number in code.

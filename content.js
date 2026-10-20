@@ -13,11 +13,10 @@ export const inputs = [
 export const byInput=Object.fromEntries(inputs.map(x=>[x.id,x]));
 export const sounders=[{id:'passive-buzzer',name:'Passive buzzer',action:'Notes, chirps & slides',desc:'Change the pitch as well as the timing.',kit:'Small 3.3 V GPIO-compatible passive piezo buzzer; two jumper leads.',hint:'Check the packet for passive or external drive. The + symbol only marks polarity. A loudspeaker needs a different circuit.'},{id:'buzzer',name:'Active buzzer',action:'Beeps, pulses & rhythms',desc:'One built-in pitch; make it yours with timing.',kit:'Small 3.3 V GPIO-compatible active buzzer; two jumper leads.',hint:'Check the packet for active or built-in oscillator. Use rhythm and duration: this route does not change pitch.'}];
 export const parts=[
- {id:'body',title:'Make the body',sub:'Cardboard, fabric, found objects…',desc:'Explore materials, shapes and ways of holding it.',icon:'shape',colour:'pink'},
- {id:'sound',title:'Choose your sound maker',sub:'Active or passive buzzer',desc:'Connect the part that will make your noise.',icon:'speaker',colour:'yellow'},
- {id:'sounds',title:'Make some sounds',sub:'Beep, pulse, chirp or slide',desc:'Play with code and hear what changes.',icon:'notes',colour:'blue'},
  {id:'inputs',title:'Make your controls',sub:'10 ways to detect something',desc:'Press, touch, turn, rock or cast a shadow.',icon:'dial',colour:'green'},
- {id:'combine',title:'Bring it together',sub:'Invent the rules',desc:'Combine movements and sounds in your own way.',icon:'connect',colour:'purple'},
+ {id:'sound',title:'Choose your sound maker',sub:'Active or passive buzzer',desc:'Connect the part that will make your noise.',icon:'speaker',colour:'yellow'},
+ {id:'combine',title:'Decide with code',sub:'Join your control and sound tests',desc:'Connect both scripts, then choose what happens.',icon:'connect',colour:'purple'},
+ {id:'body',title:'Make the body',sub:'Cardboard, fabric, found objects…',desc:'Explore materials, shapes and ways of holding it.',icon:'shape',colour:'pink'},
  {id:'play',title:'Play & change it',sub:'Keep this version. Try another.',desc:'Try this version, share a performance and remix.',icon:'star',colour:'orange'}
 ];
 export const examples={

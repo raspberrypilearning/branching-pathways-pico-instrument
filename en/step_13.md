@@ -1,49 +1,46 @@
-## 5C - Turn a dial
+## 3B - Passive buzzer
 
-A dial can bend pitch or change the speed of a rhythm.
+A **passive** buzzer needs a changing signal. You can change its pitch as well as its rhythm. Look for *passive* or *external drive* on the packet. On [4B - Play named notes](4B%20-%20Play%20named%20notes.md), picozero's `Speaker` lets you write `"c4"` instead of a frequency such as `262`.
 
 > [!CAUTION]
 >
-> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). Use only one buzzer on GP9 at a time.
 
 ## Step 1
 
 > [!TASK]
 >
-> Gather a 10 kΩ potentiometer and three leads.
+Use a small 3.3 V GPIO-compatible passive piezo buzzer. Connect **+ to GP9** (physical pin 12) and **− to GND**.
 >
-> One end goes to GND, the middle to GP26, and the other end to 3V3 OUT. Check your dial’s leg order.
->
-> ![Turn a dial wiring diagram from Skills Bricks](images/potentiometer-wiring.png)
+> ![Passive buzzer wiring from Skills Bricks](images/passive-buzzer-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/potentiometer/potentiometer-pico.html) in Thonny:
+Try the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/passive-buzzer/passive-buzzer-pico.html):
 >
 > ```python
-> from picozero import Pot
+> from picozero import PWMBuzzer
 >
-> pot = Pot(26)
+> # GP9, 2000 Hz, 50% duty
+> buzzer = PWMBuzzer(9, 2000, 32768)
 >
-> setting = pot.value
+> buzzer.on()
 > ```
 >
-> Add this underneath to see when your control detects an action:
+> Add these lines underneath so the test stops by itself:
 >
 > ```python
-> print(setting)
-> if setting > 0.5:
->     print("Playing action detected!")
+> from time import sleep
+> sleep(0.25)
+> buzzer.off()
 > ```
 
 ## Test
 
 > [!TASK]
 >
-> Turn gently. Run again at different positions; the value should move between about 0 and 1. Try a different action or change the number in the `if` line.
+Did you hear a steady tone? Put `buzzer.freq = 440` **before** `buzzer.on()`, then run it again. If the pitch does not change, check whether your part is an [active buzzer](3A%20-%20Active%20buzzer.md).
 
-## Make it yours
-
-Give the dial pitch, speed or another job. Choose another control too if you want; each control needs its own signal pin.
+Next, try [named notes](4B%20-%20Play%20named%20notes.md), a [pitch slide](4C%20-%20Slide%20between%20pitches.md), or any control.

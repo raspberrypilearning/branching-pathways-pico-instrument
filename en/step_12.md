@@ -1,49 +1,45 @@
-## 5B - Touch a pad
+## 3A - Active buzzer
 
-A light touch can start a sound.
+An **active** buzzer has a built-in oscillator. It makes one pitch; you choose its rhythm and length. It cannot play different notes. Look for *active* or *built-in oscillator* on the packet.
 
 > [!CAUTION]
 >
-> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). Unplug before wiring.
 
 ## Step 1
 
 > [!TASK]
 >
-> Gather a TTP223 touch module and three leads.
+Use a small 3.3 V GPIO-compatible active buzzer. Connect **+ to GP9** (physical pin 12) and **− to GND**.
 >
-> SIG goes to GP17, VCC to 3V3 OUT, and GND to GND.
->
-> ![Touch a pad wiring diagram from Skills Bricks](images/capacitive-touch-wiring.png)
+> ![Active buzzer wiring from Skills Bricks](images/buzzer-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/capacitive-touch/capacitive-touch-pico.html) in Thonny:
+Try the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/buzzer/buzzer-pico.html):
 >
 > ```python
-> from picozero import TouchSensor
+> from picozero import Buzzer
 >
-> touch = TouchSensor(17)
+> buzzer = Buzzer(9)
 >
-> touched = touch.is_touched
+> buzzer.on()
 > ```
 >
-> Add this underneath to see when your control detects an action:
+> Add these lines underneath so the test stops by itself:
 >
 > ```python
-> print(touched)
-> if touched:
->     print("Playing action detected!")
+> from time import sleep
+> sleep(0.25)
+> buzzer.off()
 > ```
 
 ## Test
 
 > [!TASK]
 >
-> Touch and release the pad. A bare foil or thread contact uses the switch page instead. Try a different action or change the number in the `if` line.
+Did you hear a steady beep? If it stayed silent, check the + and − connections. If its pitch changes when you change a number, you probably have a **passive** buzzer; try [3B](3B%20-%20Passive%20buzzer.md).
 
-## Make it yours
-
-Hide the pad behind a thin covering, then test again. Choose another control too if you want; each control needs its own signal pin.
+Try [beeps and rhythms](4A%20-%20Beeps%20and%20rhythms.md) next, or choose a control first.

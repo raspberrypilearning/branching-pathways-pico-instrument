@@ -1,49 +1,54 @@
-## 5F - Tip or rock it
+## 6C - Put contacts wherever you want
 
-A tilt switch notices when you rock the body.
+A button, two pieces of foil or conductive thread can all make a switch. Put contacts where they suit **your** playing movement.
 
 > [!CAUTION]
 >
-> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
+> Have you tested one [button or homemade switch](5A%20-%20Press%20or%20squeeze.md) and a [passive buzzer](3B%20-%20Passive%20buzzer.md)? Repeat the switch circuit only after that first test works.
 
 ## Step 1
 
 > [!TASK]
 >
-> Gather a ball tilt switch and two leads.
+Make three separate switches. Follow the Skills Bricks button diagram each time, changing the signal pin: contact 1 **GP10**, contact 2 **GP0**, contact 3 **GP1**. Each switch's other side goes to **GND**. Keep all exposed contacts away from 3V3. Buzzer **+ → GP9**, **− → GND**.
 >
-> Connect GP8 through the switch to GND.
+> ![Button-to-GND switch wiring](images/button-wiring.png)
 >
-> ![Tip or rock it wiring diagram from Skills Bricks](images/tilt-switch-wiring.png)
+> ![Passive buzzer wiring](images/passive-buzzer-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/tilt-switch/tilt-switch-pico.html) in Thonny:
+The [Skills Bricks button snippet](https://raspberrypifoundation.github.io/skills-bricks/button/button-pico.html) starts with `Button(10)`. Repeat it on the other pins and choose a note for each:
 >
 > ```python
-> from picozero import Switch
+> from picozero import Button, PWMBuzzer
+> from time import sleep
 >
-> tilt = Switch(8)
+> contacts = [Button(10), Button(0), Button(1)]
+> notes = [262, 330, 392]
+> buzzer = PWMBuzzer(9, 2000, 32768)
 >
-> tilted = tilt.is_open
-> ```
->
-> Add this underneath to see when your control detects an action:
->
-> ```python
-> print(tilted)
-> if tilted:
->     print("Playing action detected!")
+> try:
+>     while True:
+>         pitch = None
+>         for contact, note in zip(contacts, notes):
+>             if contact.is_pressed:
+>                 pitch = note
+>                 break
+>         if pitch is None:
+>             buzzer.off()
+>         else:
+>             buzzer.freq = pitch
+>             buzzer.on()
+>         sleep(0.01)
+> finally:
+>     buzzer.off()
 > ```
 
 ## Test
 
 > [!TASK]
 >
-> Tip slowly. The reading may flicker while the ball rolls. Try a different action or change the number in the `if` line.
-
-## Make it yours
-
-Make a rocking instrument or a sound creature. Choose another control too if you want; each control needs its own signal pin.
+Try each contact. Change the three pitch numbers or the contact positions. If two contacts close together, the first in the list plays.

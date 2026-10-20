@@ -11,45 +11,6 @@ groups:
         file: 1A - Connect and test your Pico.md
         title: 1A - Connect and test your Pico
 
-  - id: 2
-    title: Make the body
-    options:
-      - id: 2A
-        file: 2A - Follow your own idea.md
-        title: 2A - Follow your own idea
-      - id: 2B
-        file: 2B - Cut fold and join.md
-        title: 2B - Cut fold and join
-      - id: 2C
-        file: 2C - Adapt something you have.md
-        title: 2C - Adapt something you have
-      - id: 2D
-        file: 2D - Wrap stitch and stuff.md
-        title: 2D - Wrap stitch and stuff
-
-  - id: 3
-    title: Choose your sound maker
-    options:
-      - id: 3A
-        file: 3A - Active buzzer.md
-        title: 3A - Active buzzer
-      - id: 3B
-        file: 3B - Passive buzzer.md
-        title: 3B - Passive buzzer
-
-  - id: 4
-    title: Make some sounds
-    options:
-      - id: 4A
-        file: 4A - Beeps and rhythms.md
-        title: 4A - Beeps and rhythms
-      - id: 4B
-        file: 4B - Play named notes.md
-        title: 4B - Play named notes
-      - id: 4C
-        file: 4C - Slide between pitches.md
-        title: 4C - Slide between pitches
-
   - id: 5
     title: Make your controls
     options:
@@ -84,18 +45,53 @@ groups:
         file: 5J - Explore warm and cool.md
         title: 5J - Explore warm and cool
 
+  - id: 3
+    title: Choose your sound maker
+    options:
+      - id: 3A
+        file: 3A - Active buzzer.md
+        title: 3A - Active buzzer
+      - id: 3B
+        file: 3B - Passive buzzer.md
+        title: 3B - Passive buzzer
+
   - id: 6
-    title: Bring it together
+    title: Decide with code
     options:
       - id: 6A
-        file: 6A - Try one control.md
-        title: 6A - Try one control
+        file: 6A - Connect a control and sound.md
+        title: 6A - Connect a control and sound
       - id: 6B
         file: 6B - Give two controls a job.md
         title: 6B - Give two controls a job
       - id: 6C
         file: 6C - Put contacts wherever you want.md
         title: 6C - Put contacts wherever you want
+      - id: 4A
+        file: 4A - Beeps and rhythms.md
+        title: 4A - Beeps and rhythms
+      - id: 4B
+        file: 4B - Play named notes.md
+        title: 4B - Play named notes
+      - id: 4C
+        file: 4C - Slide between pitches.md
+        title: 4C - Slide between pitches
+
+  - id: 2
+    title: Make the body
+    options:
+      - id: 2A
+        file: 2A - Follow your own idea.md
+        title: 2A - Follow your own idea
+      - id: 2B
+        file: 2B - Cut fold and join.md
+        title: 2B - Cut fold and join
+      - id: 2C
+        file: 2C - Adapt something you have.md
+        title: 2C - Adapt something you have
+      - id: 2D
+        file: 2D - Wrap stitch and stuff.md
+        title: 2D - Wrap stitch and stuff
 
   - id: 7
     title: Play and change it

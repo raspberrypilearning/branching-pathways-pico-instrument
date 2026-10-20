@@ -1,29 +1,49 @@
-## 2B - Cut fold and join
+## 5B - Touch a pad
 
-Fold card into a shape you can play.
+A light touch can start a sound.
+
+> [!CAUTION]
+>
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
 
 ## Step 1
 
 > [!TASK]
 >
-> Fold a scrap of card. Try holding and pressing it. Change its size if a movement feels awkward.
+> Gather a TTP223 touch module and three leads.
+>
+> SIG goes to GP17, VCC to 3V3 OUT, and GND to GND.
+>
+> ![Touch a pad wiring diagram from Skills Bricks](images/capacitive-touch-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-> Join pieces with tape tabs. Leave one side open so you can reach the Pico and wires.
-
-## Step 3
-
-> [!TASK]
+> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/capacitive-touch/capacitive-touch-pico.html) in Thonny:
 >
-> Mark places for controls and a buzzer. Keep the USB socket and buzzer opening clear.
+> ```python
+> from picozero import TouchSensor
+>
+> touch = TouchSensor(17)
+>
+> touched = touch.is_touched
+> ```
+>
+> Add this underneath to see when your control detects an action:
+>
+> ```python
+> print(touched)
+> if touched:
+>     print("Playing action detected!")
+> ```
 
 ## Test
 
 > [!TASK]
 >
-> Try the playing movement. Does your body stay together and still open for repairs?
+> Touch and release the pad. A bare foil or thread contact uses the switch page instead. Try a different action or change the number in the `if` line.
 
-Add any control from group 5; its page has the wiring and code.
+## Make it yours
+
+Hide the pad behind a thin covering, then test again. Choose another control too if you want; each control needs its own signal pin.

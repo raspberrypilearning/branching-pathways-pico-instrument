@@ -1,50 +1,41 @@
-## 5I - Play with warmth
+## 4C - Slide between pitches
 
-A temperature sensor changes slowly with warmth.
+Make a passive buzzer climb, fall or wobble between pitches.
 
 > [!CAUTION]
 >
-> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
+> Have you wired and tested [3B - Passive buzzer](3B%20-%20Passive%20buzzer.md)? An active buzzer keeps its built-in pitch.
 
 ## Step 1
 
 > [!TASK]
 >
-> Gather a TMP36 sensor and three leads.
+Keep the [Skills Bricks passive-buzzer circuit](https://raspberrypifoundation.github.io/skills-bricks/passive-buzzer/passive-buzzer-pico.html) on GP9 and GND.
 >
-> Flat face towards you: left to 3V3, centre to GP28, right to GND. Keep the legs apart.
->
-> ![Play with warmth wiring diagram from Skills Bricks](images/temperature-sensor-wiring.png)
+> ![Passive buzzer wiring](images/passive-buzzer-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/temperature-sensor/temperature-sensor-pico.html) in Thonny:
+Start with the Skills Bricks `PWMBuzzer` lines, then change its frequency a little at a time:
 >
 > ```python
-> from picozero import TemperatureSensor
+> from picozero import PWMBuzzer
+> from time import sleep
 >
-> convert = lambda voltage: (voltage - 0.5) * 100
-> sensor = TemperatureSensor(28, conversion=convert)
->
-> temperature = sensor.temp
-> ```
->
-> Add this underneath to see when your control detects an action:
->
-> ```python
-> print(temperature)
-> if temperature > 25:
->     print("Playing action detected!")
+> buzzer = PWMBuzzer(9, 2000, 32768)
+> try:
+>     buzzer.on()
+>     for pitch in range(300, 1200, 20):
+>         buzzer.freq = pitch
+>         sleep(0.02)
+> finally:
+>     buzzer.off()
 > ```
 
 ## Test
 
 > [!TASK]
 >
-> Read the room temperature, then warm the sensor gently with your fingers. Try a different action or change the number in the `if` line.
-
-## Make it yours
-
-Make a slowly changing sound. Choose another control too if you want; each control needs its own signal pin.
+Swap `300` and `1200` and make the step negative to slide down. What happens if you change `0.02`?

@@ -1,48 +1,49 @@
-## 4B - Play named notes
+## 5H - Flip a switch
 
-The **passive** buzzer can play note names such as `"c4"`, `"f#4"` and `"c5"`. Play notes one at a time; `""` makes a rest.
+A toggle stays in its chosen position.
 
 > [!CAUTION]
 >
-> Have you wired and tested [3B - Passive buzzer](3B%20-%20Passive%20buzzer.md)? An active buzzer cannot play different pitches.
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
 
 ## Step 1
 
 > [!TASK]
 >
-Keep the passive buzzer on GP9 and GND, as in the [Skills Bricks diagram](https://raspberrypifoundation.github.io/skills-bricks/passive-buzzer/passive-buzzer-pico.html).
+> Gather an SPDT toggle switch and two leads.
 >
-> ![Passive buzzer wiring](images/passive-buzzer-wiring.png)
+> Connect COM (centre leg) to GP6 and one outside leg to GND. Leave the other outside leg unconnected.
+>
+> ![Flip a switch wiring diagram from Skills Bricks](images/toggle-switch-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-The Skills Bricks snippet starts with `PWMBuzzer(9, 2000, 32768)`. For note **names**, use `Speaker` on the same GP9 circuit **instead**:
+> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/toggle-switch/toggle-switch-pico.html) in Thonny:
 >
 > ```python
-> from picozero import Speaker
+> from picozero import Switch
 >
-> buzzer = Speaker(9, duty_factor=32768)
-> try:
->     buzzer.play("c4", duration=0.5)
-> finally:
->     buzzer.off()
->     buzzer.close()
+> mode = Switch(6)
+>
+> mode_two = mode.is_closed
 > ```
 >
-> Do not create `Speaker` and `PWMBuzzer` on GP9 at the same time.
+> Add this underneath to see when your control detects an action:
+>
+> ```python
+> print(mode_two)
+> if mode_two:
+>     print("Playing action detected!")
+> ```
 
 ## Test
 
 > [!TASK]
 >
-Change `"c4"` to `"g4"`, then `"c5"`. Which note do you prefer? Try these groups **one note at a time**:
->
-> - Bright fanfare: `"c4"`, `"e4"`, `"g4"`, `"c5"`
-> - Gentle folk/pop: `"c4"`, `"d4"`, `"e4"`, `"g4"`, `"a4"`
-> - Dramatic game theme: `"c4"`, `"d#4"`, `"g4"`, `"c5"`
-> - Bluesy riff: `"a3"`, `"c4"`, `"d4"`, `"d#4"`, `"e4"`, `"g4"`
-> - Dreamy sound: `"c4"`, `"d4"`, `"e4"`, `"f#4"`, `"g#4"`, `"a#4"`
+> Flip the switch each way and run again. Use it to choose a playing mode. Try a different action or change the number in the `if` line.
 
-Try a new order or length. The style labels are ideas, not rules.
+## Make it yours
+
+Choose between two rhythms or sound rules. Choose another control too if you want; each control needs its own signal pin.

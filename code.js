@@ -14,6 +14,25 @@ export function inputCode(id){const x=byInput[id];if(!x)throw Error('Unknown inp
  if(id==='temperature-probe')return `${probeInit}\nfrom time import sleep_ms\n\nwhile True:\n    sensor.convert_temp()\n    sleep_ms(750)\n    reading = sensor.read_temp(probes[0])\n    print(reading)\n    if ${condition}:\n        print("Playing action detected!")\n`;
  return `from picozero import ${x.cls}\nfrom time import sleep\n\n${x.setup}\n\nwhile True:\n    reading = ${x.read}\n    print(reading)\n    if ${condition}:\n        print("Playing action detected!")\n    sleep(0.1)\n`;
 }
+export function joinedTestCode(id,type){
+ if(!['buzzer','passive-buzzer'].includes(type))throw Error('Choose a sound maker.');
+ const [setup,loop]=inputCode(id).split('\nwhile True:\n');
+ const action=loop.replace('    print(reading)\n','')
+  .replace('        print("Playing action detected!")','        buzzer.on()\n    else:\n        buzzer.off()');
+ return `# Your control test and sound test, joined with one rule.
+# Keep any pins or settings you changed in your own tests.
+${setup}
+
+# Setup from the sound test
+${soundHead(type)}
+
+try:
+    while True:
+${action.trimEnd().split('\n').map(line=>'    '+line).join('\n')}
+finally:
+    buzzer.off()
+`;
+}
 export function combinedCode(id,type,behaviour='hold'){
  const x=byInput[id];if(!x||!['buzzer','passive-buzzer'].includes(type))throw Error('Choose an input and sound maker.');
  if(behaviour==='pitch'&&(!x.analogue||type!=='passive-buzzer'))throw Error('Pitch bending needs a changing-value input and passive buzzer.');

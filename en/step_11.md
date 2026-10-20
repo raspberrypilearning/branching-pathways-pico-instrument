@@ -1,6 +1,6 @@
-## 5A - Press or squeeze
+## 5J - Explore warm and cool
 
-A button or two bits of foil make a switch.
+A sealed probe can compare warm and cool water.
 
 > [!CAUTION]
 >
@@ -10,31 +10,38 @@ A button or two bits of foil make a switch.
 
 > [!TASK]
 >
-> Gather a push button or foil and a card spacer.
+> Gather a sealed DS18B20 probe, a 4.7 kΩ resistor and leads.
 >
-> Connect GP10 through the switch to GND. A four-leg button has joined pairs: follow the picture.
+> VDD goes to 3V3, DQ to GP22, GND to GND. Put 4.7 kΩ between DQ and 3V3. Check your probe’s wire colours.
 >
-> ![Press or squeeze wiring diagram from Skills Bricks](images/button-wiring.png)
+> ![Explore warm and cool wiring diagram from Skills Bricks](images/temperature-probe-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/button/button-pico.html) in Thonny:
+> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/temperature-probe/temperature-probe-pico.html) in Thonny:
 >
 > ```python
-> from picozero import Button
+> from machine import Pin
+> import onewire, ds18x20
+> from time import sleep_ms
 >
-> button = Button(10)
->
-> pressed = button.is_pressed
+> bus = onewire.OneWire(Pin(22))
+> sensor = ds18x20.DS18X20(bus)
+> probes = sensor.scan()
+> assert probes, "Check probe wiring"
+> sensor.convert_temp()
+> sleep_ms(750)
+> temperature = sensor.read_temp(probes[0])
+> print(temperature)
 > ```
 >
 > Add this underneath to see when your control detects an action:
 >
 > ```python
-> print(pressed)
-> if pressed:
+> print(temperature)
+> if temperature > 25:
 >     print("Playing action detected!")
 > ```
 
@@ -42,8 +49,8 @@ A button or two bits of foil make a switch.
 
 > [!TASK]
 >
-> Press and release. Run the code each time and look for True and False. Keep foil apart until pressed. Try a different action or change the number in the `if` line.
+> Wait for each new reading. Only the sealed tip goes in water; keep the Pico and connections dry. Try a different action or change the number in the `if` line.
 
 ## Make it yours
 
-Try a big pad, a small fret or a squeeze handle. Choose another control too if you want; each control needs its own signal pin.
+Make a slow-changing warm/cool sound experiment. Choose another control too if you want; each control needs its own signal pin.

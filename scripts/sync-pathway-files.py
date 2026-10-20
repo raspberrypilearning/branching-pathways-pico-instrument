@@ -62,7 +62,9 @@ def check_content(routes: list[tuple[str, Path]]) -> None:
 
     cards = {c["id"]: c for c in json.loads((ROOT / "data/bricks.json").read_text())}
     control_ids = ["button", "capacitive-touch", "potentiometer", "ldr", "distance", "tilt-switch", "line-sensor", "toggle-switch", "temperature-sensor", "temperature-probe"]
-    for (_, page), id in zip(routes[10:20], control_ids):
+    route_files = dict(routes)
+    for route, id in zip((f"5{letter}" for letter in "ABCDEFGHIJ"), control_ids):
+        page = route_files[route]
         body = "\n".join(line[2:] if line.startswith("> ") else "" if line == ">" else line for line in page.read_text().splitlines())
         assert cards[id]["code"].strip() in body, f"Skills Bricks code changed in {page.name}"
         assert (EN / "images" / f"{id}-wiring.png").is_file(), f"Missing wiring diagram: {id}"

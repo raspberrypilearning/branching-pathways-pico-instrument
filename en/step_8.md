@@ -1,46 +1,49 @@
-## 4A - Beeps and rhythms
+## 5G - Pull a pattern through
 
-Any buzzer can make a rhythm. Change the lengths of the sound and the silence.
+Move dark and light marks under a sensor to make a rhythm.
 
 > [!CAUTION]
 >
-> Have you connected and tested an [active buzzer](3A%20-%20Active%20buzzer.md) or [passive buzzer](3B%20-%20Passive%20buzzer.md)? You can read this page first, then return to test it.
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
 
 ## Step 1
 
 > [!TASK]
 >
-Use **one** GP9 buzzer circuit. Choose its wiring diagram:
+> Gather a KY-033 line sensor, contrasting card and three leads.
 >
-> ![Active buzzer wiring](images/buzzer-wiring.png)
+> S goes to GP18, V+ to 3V3 OUT and G to GND.
 >
-> ![Passive buzzer wiring](images/passive-buzzer-wiring.png)
+> ![Pull a pattern through wiring diagram from Skills Bricks](images/line-sensor-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-Use the [Skills Bricks active-buzzer snippet](https://raspberrypifoundation.github.io/skills-bricks/buzzer/buzzer-pico.html) to start this program. For a passive buzzer, replace its first two lines with `from picozero import PWMBuzzer` and `buzzer = PWMBuzzer(9, 2000, 32768)`.
+> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/line-sensor/line-sensor-pico.html) in Thonny:
 >
 > ```python
-> from picozero import Buzzer
-> from time import sleep
+> from picozero import DigitalInputDevice
 >
-> buzzer = Buzzer(9)
-> rhythm = [(0.1, 0.15), (0.1, 0.15), (0.4, 0.5)]
+> line = DigitalInputDevice(18, pull_up=False)
 >
-> try:
->     for sound, silence in rhythm:
->         buzzer.on()
->         sleep(sound)
->         buzzer.off()
->         sleep(silence)
-> finally:
->     buzzer.off()
+> on_line = line.is_active
+> ```
+>
+> Add this underneath to see when your control detects an action:
+>
+> ```python
+> print(on_line)
+> if on_line:
+>     print("Playing action detected!")
 > ```
 
 ## Test
 
 > [!TASK]
 >
-Change one pair. Does the pattern feel different? An active buzzer keeps one pitch; a passive buzzer can change pitch on another page.
+> Move a marked strip under the sensor. Adjust its small dial until the reading changes. Try a different action or change the number in the `if` line.
+
+## Make it yours
+
+Make a hand-cranked rhythm wheel. Choose another control too if you want; each control needs its own signal pin.

@@ -47,7 +47,7 @@ for case in cases:
     def sleep(t):
         records.append((step[0],devices[9].output,devices[9].freq));step[0]+=1
         if step[0]>=duration:raise SimulationDone()
-    clock.sleep=sleep;clock.ticks_ms=lambda:step[0]*10;clock.ticks_diff=lambda a,b:a-b;sys.modules['time']=clock
+    clock.sleep=sleep;clock.sleep_ms=lambda ms:sleep(ms/1000);clock.ticks_ms=lambda:step[0]*10;clock.ticks_diff=lambda a,b:a-b;sys.modules['time']=clock
     machine=types.ModuleType('machine');machine.Pin=lambda n:n;sys.modules['machine']=machine
     onewire=types.ModuleType('onewire');onewire.OneWire=lambda pin:pin;sys.modules['onewire']=onewire
     class Probe:
@@ -64,6 +64,15 @@ for case in cases:
     if case.get('input')=='distance':assert all(r[1]==0 for r in records if 40<=r[0]<60),('missing echo',case)
     if case.get('mode')=='pitch':assert len({r[2] for r in records if r[1]})>=2,('pitch never changed',case)
     if case.get('sound')=='buzzer':assert {r[2] for r in records}=={2000},('active pitch changed',case)
+    if case.get('joined'):
+        for tick, output, _ in records:
+            low = tick < 30 or 70 <= tick < 110
+            expected = not low
+            if case['input']=='ldr': expected = low
+            if case['input']=='distance': expected = low and not 40 <= tick < 60
+            # The probe waits for its conversion before the next output update.
+            if case['input']=='temperature-probe': expected = tick >= 110
+            assert bool(output)==expected,('joined rule changed',case['input'],tick,output,expected)
     if kind in ('guitar','violin'):
         expected={20:262,50:330,80:392}
         for i,pitch in expected.items():assert records[i][1:]==(1,pitch),(kind,i,records[i])

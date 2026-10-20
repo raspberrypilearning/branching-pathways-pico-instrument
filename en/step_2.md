@@ -1,23 +1,49 @@
-## 2A - Follow your own idea
+## 5A - Press or squeeze
 
-Start with a sound, playing movement, material or shape. Your body does not need to copy a familiar instrument.
+A button or two bits of foil make a switch.
+
+> [!CAUTION]
+>
+> First complete [1A - Connect and test your Pico](1A%20-%20Connect%20and%20test%20your%20Pico.md). You can explore this idea before wiring it.
 
 ## Step 1
 
 > [!TASK]
 >
-> Make a quick version of the part that interests you. Try holding or moving it before fixing the Pico in place.
+> Gather a push button or foil and a card spacer.
+>
+> Connect GP10 through the switch to GND. A four-leg button has joined pairs: follow the picture.
+>
+> ![Press or squeeze wiring diagram from Skills Bricks](images/button-wiring.png)
 
 ## Step 2
 
 > [!TASK]
 >
-> Leave room for the Pico, USB cable, wires and buzzer. Support the circuit on something removable so you can change it.
+> Run the [Skills Bricks code](https://raspberrypifoundation.github.io/skills-bricks/button/button-pico.html) in Thonny:
+>
+> ```python
+> from picozero import Button
+>
+> button = Button(10)
+>
+> pressed = button.is_pressed
+> ```
+>
+> Add this underneath to see when your control detects an action:
+>
+> ```python
+> print(pressed)
+> if pressed:
+>     print("Playing action detected!")
+> ```
 
 ## Test
 
 > [!TASK]
 >
-> Pretend to play it. Can you reach the controls? What could move, grow or disappear?
+> Press and release. Run the code each time and look for True and False. Keep foil apart until pressed. Try a different action or change the number in the `if` line.
 
-Choose any control from group 5 and either buzzer from group 3. Use their wiring and code pages. The body can change as you test.
+## Make it yours
+
+Try a big pad, a small fret or a squeeze handle. Choose another control too if you want; each control needs its own signal pin.
